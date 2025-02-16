@@ -1,11 +1,8 @@
-//
-//  main.swift
-//  lab1
-//
-//  Created by Danil Tolstov on 16.02.2025.
-//
-
 import Foundation
 
-print("Hello, World!")
+func main() {
+    print("Welcome to Library Manager!")
+    
+}
 
+main()
