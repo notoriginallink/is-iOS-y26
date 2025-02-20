@@ -8,7 +8,7 @@ public class YearCriteriaScenario: Scenario {
     }
     
     public func run() -> Bool {
-        print("Enter year:\n>>> ", terminator: "")
+        OutputDriver.printPrompt("Enter year:")
         guard let year = Int(readLine() ?? "") else {
             return true
         }

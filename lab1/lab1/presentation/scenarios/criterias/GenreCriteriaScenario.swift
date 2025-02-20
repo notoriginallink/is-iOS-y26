@@ -8,8 +8,8 @@ public class GenreCriteriaScenario: Scenario {
     }
     
     public func run() -> Bool {
-        print("Enter genre:\n>>> ", terminator: "")
-        var input = readLine()
+        OutputDriver.printPrompt("Enter genre:")
+        let input = readLine()
         guard (input != nil) else {
             return false
         }

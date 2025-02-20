@@ -10,19 +10,13 @@ public class DeleteByIdScenario: Scenario {
     }
     
     public func run() -> Bool {
-        print("Enter ID of book to delete: ", terminator: "")
+        OutputDriver.printPrompt("Enter ID of book to delete:")
         if let idString = readLine(), let id = UUID.init(uuidString: idString) {
-            do {
-                try lib.removeBook(id)
-                print("Book deleted successfully.")
-                return true
-            } catch {
-                print("Error: \(error)")
-                return false
-            }
+            lib.removeBook(id)
+            OutputDriver.printSuccess("Book deleted successfully.")
         } else {
-            print("🛑 Invalid ID. Please try again")
-            return true
+            OutputDriver.printError("Invalid ID. Please try again")
         }
+        return true
     }
 }

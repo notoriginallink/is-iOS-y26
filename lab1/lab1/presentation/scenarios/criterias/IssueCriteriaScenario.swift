@@ -8,7 +8,7 @@ public class IssueCriteriaScenario: Scenario {
     }
     
     public func run() -> Bool {
-        print("Enter issue number:\n>>> ", terminator: "")
+        OutputDriver.printPrompt("Enter issue number:")
         guard let issue = Int(readLine() ?? "") else {
             return true
         }

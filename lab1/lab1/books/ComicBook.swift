@@ -9,6 +9,6 @@ public class ComicBook: BasicBook {
     }
     
     public override func getDescription() -> String {
-        return super.getDescription() + "\nIssue: \(issue)"
+        return super.getDescription() + "\n\tIssue: \(issue)"
     }
 }

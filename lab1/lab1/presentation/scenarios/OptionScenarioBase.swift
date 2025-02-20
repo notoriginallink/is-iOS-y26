@@ -10,10 +10,10 @@ public class OptionScenarioBase: Scenario {
             ind += 1
         }
         
-        print(">>> ", terminator: "")
+        OutputDriver.printInputForm()
         let choice = Int(readLine() ?? "") ?? -1
         guard choice > 0 && choice <= getScenarios().count else {
-            print("🛑 Incorrect option. Please try again")
+            OutputDriver.printError("Incorrect option. Please try again")
             return self.run()
         }
         

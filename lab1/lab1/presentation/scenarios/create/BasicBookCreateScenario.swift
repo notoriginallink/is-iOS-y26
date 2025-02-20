@@ -1,28 +1,12 @@
 public class BasicBookCreateScenario: BookCreateScenarioBase {
-    private let lib: Library
     
-    init(library: Library) {
-        lib = library
-        super.init()
+    override init(library: Library) {
+        super.init(library: library)
         name = "Basic book"
     }
     
-    public override func run() -> Bool {
-        buildBasic()
-        
-        guard (title != nil) && (author != nil) && (genre != nil) && (publicationYear != nil) else {
-            return false
-        }
-        
-        let book = BasicBook(title: title!, author: author!, publicationYear: publicationYear!, genre: genre!)
-        
-        lib.addBook(book)
-        
-        print("✅ Book added successfully!")
-        
-        reset()
-        
-        return true
+    public override func buildBook() -> LibraryItem? {
+        return BasicBook(title: title!, author: author!, publicationYear: publicationYear!, genre: genre!)
     }
     
     public override func reset() {

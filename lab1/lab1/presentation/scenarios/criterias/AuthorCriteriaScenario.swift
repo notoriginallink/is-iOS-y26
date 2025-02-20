@@ -8,7 +8,7 @@ public class AuthorCriteriaScenario: Scenario {
     }
     
     public func run() -> Bool {
-        print("Enter author:\n>>> ", terminator: "")
+        OutputDriver.printPrompt("Enter author:")
         guard let author = readLine() else {
             return true
         }

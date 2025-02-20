@@ -8,7 +8,7 @@ public class TitleCriteriaScenario: Scenario {
     }
     
     public func run() -> Bool {
-        print("Enter title:\n>>> ", terminator: "")
+        OutputDriver.printPrompt("Enter title:")
         guard let title = readLine() else {
             return true
         }

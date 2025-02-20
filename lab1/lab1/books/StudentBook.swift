@@ -7,6 +7,6 @@ public class StudentBook: BasicBook {
     }
     
     public override func getDescription() -> String {
-        return super.getDescription() + "\nYear: \(year)"
+        return super.getDescription() + "\n\tYear: \(year)"
     }
 }
