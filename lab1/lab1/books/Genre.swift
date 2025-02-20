@@ -1,4 +1,4 @@
-public enum Genre: String {
+public enum Genre: String, CaseIterable {
     case fiction
     case nonFiction
     case mystery

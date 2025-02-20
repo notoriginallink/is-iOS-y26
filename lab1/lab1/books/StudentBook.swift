@@ -5,4 +5,8 @@ public class StudentBook: BasicBook {
         self.year = year
         super.init(title: title, author: author, publicationYear: publicationYear, genre: genre)
     }
+    
+    public override func getDescription() -> String {
+        return super.getDescription() + "\nYear: \(year)"
+    }
 }

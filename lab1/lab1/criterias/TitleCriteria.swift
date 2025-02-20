@@ -9,4 +9,8 @@ public class TitleCriteria: Criteria {
     public func matches(item: any LibraryItem) -> Bool {
         return item.title.lowercased() == title
     }
+    
+    public func getDescription() -> String {
+        return "Title: \(title)"
+    }
 }

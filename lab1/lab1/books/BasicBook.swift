@@ -1,15 +1,15 @@
 import Foundation
 
 public class BasicBook: LibraryItem {
-    public private(set) var title: String
+    public let title: String
     
-    public private(set) var author: String
+    public let author: String
     
-    public private(set) var publicationYear: Int
+    public let publicationYear: Int
     
-    public private(set) var genre: Genre
+    public let genre: Genre
     
-    public private(set) var id: UUID
+    public let id: UUID
 
     init(title: String, author: String, publicationYear: Int, genre: Genre) {
         self.title = title
@@ -18,5 +18,8 @@ public class BasicBook: LibraryItem {
         self.genre = genre
         self.id = UUID.init()
     }
-
+    
+    public func getDescription() -> String {
+        return "(ID: \(id))\n\t'\(title)' by \(author)\n\tPub. in \(publicationYear)\n\tGenre: \(genre)"
+    }
 }

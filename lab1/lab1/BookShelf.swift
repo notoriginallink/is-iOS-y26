@@ -16,6 +16,6 @@ public class BookShelf: Library {
     }
     
     public func findBooksByCriteria(criteria: Criteria) -> [any LibraryItem] {
-        return shelf.values.filter(criteria.matches(item:))
+        return shelf.values.filter({criteria.matches(item: $0)})
     }
 }

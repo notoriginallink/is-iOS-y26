@@ -12,4 +12,8 @@ public class CompositeCriteria: Criteria {
     public func matches(item: any LibraryItem) -> Bool {
         return criterias.allSatisfy({$0.matches(item: item)})
     }
+    
+    public func getDescription() -> String {
+        return criterias.map({$0.getDescription()}).joined(separator: ", ")
+    }
 }
