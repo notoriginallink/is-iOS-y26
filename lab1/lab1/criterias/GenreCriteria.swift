@@ -2,11 +2,11 @@ public class GenreCriteria: Criteria {
     
     private let genre: Genre
     
-    init(genre: Genre) {
+    init(_ genre: Genre) {
         self.genre = genre
     }
     
-    public func matches(item: any LibraryItem) -> Bool {
+    public func matches(_ item: any LibraryItem) -> Bool {
         return item.genre == genre
     }
     

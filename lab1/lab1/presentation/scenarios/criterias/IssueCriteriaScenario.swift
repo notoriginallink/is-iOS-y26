@@ -13,7 +13,7 @@ public class IssueCriteriaScenario: Scenario {
             return true
         }
         
-        scenario.appendCriteria(IssueNumberCriteria(issue: issue))
+        scenario.appendCriteria(IssueNumberCriteria(issue))
         
         return true
     }

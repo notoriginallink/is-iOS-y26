@@ -17,8 +17,8 @@ public class GenreCriteriaScenario: Scenario {
         guard let genre = Genre(rawValue: input!.lowercased().trimmingCharacters(in: .whitespaces)) else {
             return true
         }
-        print(genre)
-        scenario.appendCriteria(GenreCriteria(genre: genre))
+
+        scenario.appendCriteria(GenreCriteria(genre))
         
         return true
     }

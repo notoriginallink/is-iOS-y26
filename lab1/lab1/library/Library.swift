@@ -2,7 +2,7 @@ import Foundation
 
 public protocol Library {
     func addBook(_ book: LibraryItem)
-    func removeBook(_ id: UUID)
+    func removeBook(id: UUID)
     func getAllBooks() -> [LibraryItem]
-    func findBooksByCriteria(criteria: Criteria) -> [LibraryItem]
+    func findBooksByCriteria(_ criteria: Criteria) -> [LibraryItem]
 }

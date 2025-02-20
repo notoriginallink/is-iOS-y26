@@ -13,7 +13,7 @@ public class AuthorCriteriaScenario: Scenario {
             return true
         }
         
-        scenario.appendCriteria(AuthorCriteria(author: author))
+        scenario.appendCriteria(AuthorCriteria(author))
         
         return true
     }

@@ -13,7 +13,7 @@ public class PublicationYearCriteriaScenario: Scenario {
             return true
         }
         
-        scenario.appendCriteria(PublicationYearCriteria(publicationYear: year))
+        scenario.appendCriteria(PublicationYearCriteria(year))
         
         return true
     }

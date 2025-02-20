@@ -12,7 +12,7 @@ public class DeleteByIdScenario: Scenario {
     public func run() -> Bool {
         OutputDriver.printPrompt("Enter ID of book to delete:")
         if let idString = readLine(), let id = UUID.init(uuidString: idString) {
-            lib.removeBook(id)
+            lib.removeBook(id: id)
             OutputDriver.printSuccess("Book deleted successfully.")
         } else {
             OutputDriver.printError("Invalid ID. Please try again")

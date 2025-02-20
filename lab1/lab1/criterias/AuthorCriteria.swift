@@ -2,11 +2,11 @@ public class AuthorCriteria: Criteria {
     
     private let author: String
     
-    init(author: String) {
+    init(_ author: String) {
         self.author = author.lowercased()
     }
     
-    public func matches(item: any LibraryItem) -> Bool {
+    public func matches(_ item: any LibraryItem) -> Bool {
         return item.author == author.lowercased()
     }
     

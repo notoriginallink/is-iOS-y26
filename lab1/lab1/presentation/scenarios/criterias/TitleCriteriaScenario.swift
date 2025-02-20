@@ -13,7 +13,7 @@ public class TitleCriteriaScenario: Scenario {
             return true
         }
         
-        scenario.appendCriteria(TitleCriteria(title: title))
+        scenario.appendCriteria(TitleCriteria(title))
         
         return true
     }

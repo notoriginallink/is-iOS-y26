@@ -7,7 +7,7 @@ public class BookShelf: Library {
         shelf[book.id] = book
     }
     
-    public func removeBook(_ id: UUID) {
+    public func removeBook(id: UUID) {
         shelf.removeValue(forKey: id)
     }
     
@@ -15,7 +15,7 @@ public class BookShelf: Library {
         return shelf.values.map { $0 }
     }
     
-    public func findBooksByCriteria(criteria: Criteria) -> [any LibraryItem] {
-        return shelf.values.filter({criteria.matches(item: $0)})
+    public func findBooksByCriteria(_ criteria: Criteria) -> [any LibraryItem] {
+        return shelf.values.filter({criteria.matches($0)})
     }
 }

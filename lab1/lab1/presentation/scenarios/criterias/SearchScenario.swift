@@ -9,8 +9,8 @@ public class SearchScenario: Scenario {
     }
     
     public func run() -> Bool {
-        let composite = CompositeCriteria(criterias: criterias)
-        let items = lib.findBooksByCriteria(criteria: composite)
+        let composite = CompositeCriteria(criterias)
+        let items = lib.findBooksByCriteria(composite)
     
         OutputDriver.printFoundBooks(items)
         
@@ -18,9 +18,7 @@ public class SearchScenario: Scenario {
     }
     
     func appendCriteria(_ criteria: Criteria) {
-        print(criterias.count)
         criterias.append(criteria)
-        print(criterias.count)
     }
     
     func flushCriterias() -> Void {

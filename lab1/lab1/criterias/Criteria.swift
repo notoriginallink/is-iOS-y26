@@ -1,3 +1,3 @@
 public protocol Criteria: Descriptionable {
-    func matches(item: LibraryItem) -> Bool
+    func matches(_ item: LibraryItem) -> Bool
 }
