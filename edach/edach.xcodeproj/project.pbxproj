@@ -6,27 +6,8 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXContainerItemProxy section */
-		60C680172D74FA56005B9E40 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 60C67FF82D74FA54005B9E40 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 60C67FFF2D74FA54005B9E40;
-			remoteInfo = edach;
-		};
-		60C680212D74FA56005B9E40 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 60C67FF82D74FA54005B9E40 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 60C67FFF2D74FA54005B9E40;
-			remoteInfo = edach;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		60C680002D74FA54005B9E40 /* edach.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = edach.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		60C680162D74FA56005B9E40 /* edachTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = edachTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		60C680202D74FA56005B9E40 /* edachUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = edachUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -48,34 +29,10 @@
 			path = edach;
 			sourceTree = "<group>";
 		};
-		60C680192D74FA56005B9E40 /* edachTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = edachTests;
-			sourceTree = "<group>";
-		};
-		60C680232D74FA56005B9E40 /* edachUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = edachUITests;
-			sourceTree = "<group>";
-		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		60C67FFD2D74FA54005B9E40 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		60C680132D74FA56005B9E40 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		60C6801D2D74FA56005B9E40 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -89,8 +46,6 @@
 			isa = PBXGroup;
 			children = (
 				60C680022D74FA54005B9E40 /* edach */,
-				60C680192D74FA56005B9E40 /* edachTests */,
-				60C680232D74FA56005B9E40 /* edachUITests */,
 				60C680012D74FA54005B9E40 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -99,8 +54,6 @@
 			isa = PBXGroup;
 			children = (
 				60C680002D74FA54005B9E40 /* edach.app */,
-				60C680162D74FA56005B9E40 /* edachTests.xctest */,
-				60C680202D74FA56005B9E40 /* edachUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -130,52 +83,6 @@
 			productReference = 60C680002D74FA54005B9E40 /* edach.app */;
 			productType = "com.apple.product-type.application";
 		};
-		60C680152D74FA56005B9E40 /* edachTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 60C6802E2D74FA56005B9E40 /* Build configuration list for PBXNativeTarget "edachTests" */;
-			buildPhases = (
-				60C680122D74FA56005B9E40 /* Sources */,
-				60C680132D74FA56005B9E40 /* Frameworks */,
-				60C680142D74FA56005B9E40 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				60C680182D74FA56005B9E40 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				60C680192D74FA56005B9E40 /* edachTests */,
-			);
-			name = edachTests;
-			packageProductDependencies = (
-			);
-			productName = edachTests;
-			productReference = 60C680162D74FA56005B9E40 /* edachTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		60C6801F2D74FA56005B9E40 /* edachUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 60C680312D74FA56005B9E40 /* Build configuration list for PBXNativeTarget "edachUITests" */;
-			buildPhases = (
-				60C6801C2D74FA56005B9E40 /* Sources */,
-				60C6801D2D74FA56005B9E40 /* Frameworks */,
-				60C6801E2D74FA56005B9E40 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				60C680222D74FA56005B9E40 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				60C680232D74FA56005B9E40 /* edachUITests */,
-			);
-			name = edachUITests;
-			packageProductDependencies = (
-			);
-			productName = edachUITests;
-			productReference = 60C680202D74FA56005B9E40 /* edachUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -188,14 +95,6 @@
 				TargetAttributes = {
 					60C67FFF2D74FA54005B9E40 = {
 						CreatedOnToolsVersion = 16.2;
-					};
-					60C680152D74FA56005B9E40 = {
-						CreatedOnToolsVersion = 16.2;
-						TestTargetID = 60C67FFF2D74FA54005B9E40;
-					};
-					60C6801F2D74FA56005B9E40 = {
-						CreatedOnToolsVersion = 16.2;
-						TestTargetID = 60C67FFF2D74FA54005B9E40;
 					};
 				};
 			};
@@ -214,28 +113,12 @@
 			projectRoot = "";
 			targets = (
 				60C67FFF2D74FA54005B9E40 /* edach */,
-				60C680152D74FA56005B9E40 /* edachTests */,
-				60C6801F2D74FA56005B9E40 /* edachUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		60C67FFE2D74FA54005B9E40 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		60C680142D74FA56005B9E40 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		60C6801E2D74FA56005B9E40 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -252,34 +135,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		60C680122D74FA56005B9E40 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		60C6801C2D74FA56005B9E40 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		60C680182D74FA56005B9E40 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 60C67FFF2D74FA54005B9E40 /* edach */;
-			targetProxy = 60C680172D74FA56005B9E40 /* PBXContainerItemProxy */;
-		};
-		60C680222D74FA56005B9E40 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 60C67FFF2D74FA54005B9E40 /* edach */;
-			targetProxy = 60C680212D74FA56005B9E40 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		60C6802A2D74FA56005B9E40 /* Debug */ = {
@@ -293,7 +149,6 @@
 				INFOPLIST_FILE = edach/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -320,7 +175,6 @@
 				INFOPLIST_FILE = edach/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -455,74 +309,6 @@
 			};
 			name = Release;
 		};
-		60C6802F2D74FA56005B9E40 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ru.tolstov.edachTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/edach.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/edach";
-			};
-			name = Debug;
-		};
-		60C680302D74FA56005B9E40 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ru.tolstov.edachTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/edach.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/edach";
-			};
-			name = Release;
-		};
-		60C680322D74FA56005B9E40 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ru.tolstov.edachUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = edach;
-			};
-			name = Debug;
-		};
-		60C680332D74FA56005B9E40 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ru.tolstov.edachUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = edach;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -540,24 +326,6 @@
 			buildConfigurations = (
 				60C6802A2D74FA56005B9E40 /* Debug */,
 				60C6802B2D74FA56005B9E40 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		60C6802E2D74FA56005B9E40 /* Build configuration list for PBXNativeTarget "edachTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				60C6802F2D74FA56005B9E40 /* Debug */,
-				60C680302D74FA56005B9E40 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		60C680312D74FA56005B9E40 /* Build configuration list for PBXNativeTarget "edachUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				60C680322D74FA56005B9E40 /* Debug */,
-				60C680332D74FA56005B9E40 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

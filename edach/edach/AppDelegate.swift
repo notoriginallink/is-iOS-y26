@@ -1,10 +1,3 @@
-//
-//  AppDelegate.swift
-//  edach
-//
-//  Created by Danil Tolstov on 02.03.2025.
-//
-
 import UIKit
 
 @main
