@@ -7,16 +7,16 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		60C680002D74FA54005B9E40 /* edach.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = edach.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		60C680002D74FA54005B9E40 /* drinkme.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = drinkme.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		60C680282D74FA56005B9E40 /* Exceptions for "edach" folder in "edach" target */ = {
+		60C680282D74FA56005B9E40 /* Exceptions for "edach" folder in "drinkme" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
 			);
-			target = 60C67FFF2D74FA54005B9E40 /* edach */;
+			target = 60C67FFF2D74FA54005B9E40 /* drinkme */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -24,7 +24,7 @@
 		60C680022D74FA54005B9E40 /* edach */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				60C680282D74FA56005B9E40 /* Exceptions for "edach" folder in "edach" target */,
+				60C680282D74FA56005B9E40 /* Exceptions for "edach" folder in "drinkme" target */,
 			);
 			path = edach;
 			sourceTree = "<group>";
@@ -53,7 +53,7 @@
 		60C680012D74FA54005B9E40 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				60C680002D74FA54005B9E40 /* edach.app */,
+				60C680002D74FA54005B9E40 /* drinkme.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -61,9 +61,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		60C67FFF2D74FA54005B9E40 /* edach */ = {
+		60C67FFF2D74FA54005B9E40 /* drinkme */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 60C680292D74FA56005B9E40 /* Build configuration list for PBXNativeTarget "edach" */;
+			buildConfigurationList = 60C680292D74FA56005B9E40 /* Build configuration list for PBXNativeTarget "drinkme" */;
 			buildPhases = (
 				60C67FFC2D74FA54005B9E40 /* Sources */,
 				60C67FFD2D74FA54005B9E40 /* Frameworks */,
@@ -76,11 +76,11 @@
 			fileSystemSynchronizedGroups = (
 				60C680022D74FA54005B9E40 /* edach */,
 			);
-			name = edach;
+			name = drinkme;
 			packageProductDependencies = (
 			);
 			productName = edach;
-			productReference = 60C680002D74FA54005B9E40 /* edach.app */;
+			productReference = 60C680002D74FA54005B9E40 /* drinkme.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -98,7 +98,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 60C67FFB2D74FA54005B9E40 /* Build configuration list for PBXProject "edach" */;
+			buildConfigurationList = 60C67FFB2D74FA54005B9E40 /* Build configuration list for PBXProject "drinkme" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -112,7 +112,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				60C67FFF2D74FA54005B9E40 /* edach */,
+				60C67FFF2D74FA54005B9E40 /* drinkme */,
 			);
 		};
 /* End PBXProject section */
@@ -312,7 +312,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		60C67FFB2D74FA54005B9E40 /* Build configuration list for PBXProject "edach" */ = {
+		60C67FFB2D74FA54005B9E40 /* Build configuration list for PBXProject "drinkme" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				60C6802C2D74FA56005B9E40 /* Debug */,
@@ -321,7 +321,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		60C680292D74FA56005B9E40 /* Build configuration list for PBXNativeTarget "edach" */ = {
+		60C680292D74FA56005B9E40 /* Build configuration list for PBXNativeTarget "drinkme" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				60C6802A2D74FA56005B9E40 /* Debug */,
