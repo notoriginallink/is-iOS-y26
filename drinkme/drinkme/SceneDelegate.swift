@@ -9,8 +9,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         window = .init(windowScene: scene)
         
-        let viewModel = LoginViewModel()
-        let viewController: UIViewController = LoginViewController(viewModel: viewModel)
+        let viewController = CocktailListViewController()
         
         window?.rootViewController = viewController
         window?.makeKeyAndVisible()
