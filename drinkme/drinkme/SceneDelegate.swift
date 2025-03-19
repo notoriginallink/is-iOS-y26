@@ -8,8 +8,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = (scene as? UIWindowScene) else { return }
         window = .init(windowScene: scene)
-        let viewController: UIViewController = .init()
-        viewController.view.backgroundColor = .systemCyan
+        
+        let viewModel = LoginViewModel()
+        let viewController: UIViewController = LoginViewController(viewModel: viewModel)
         
         window?.rootViewController = viewController
         window?.makeKeyAndVisible()
