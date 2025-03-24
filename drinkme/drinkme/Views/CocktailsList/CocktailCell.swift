@@ -15,7 +15,7 @@ class CocktailCell: UICollectionViewCell {
         let text = UITextField()
         text.translatesAutoresizingMaskIntoConstraints = false
         text.font = UIFont.systemFont(ofSize: 20, weight: .bold)
-        text.textColor = .background
+        text.textColor = .dark
         return text
     }()
     
@@ -23,7 +23,7 @@ class CocktailCell: UICollectionViewCell {
         let text = UITextField()
         text.translatesAutoresizingMaskIntoConstraints = false
         text.font = UIFont.systemFont(ofSize: 16)
-        text.textColor = .background
+        text.textColor = .dark
         return text
     }()
 
