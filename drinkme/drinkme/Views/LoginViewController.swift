@@ -2,88 +2,84 @@ import UIKit
 
 final class LoginViewController: UIViewController {
 
+    // MARK: - Properties
     private let viewModel = LoginViewModel()
     
-    private let closeButton: UIButton = {
-        let button = UIButton(type: .system)
-        let image = UIImage(systemName: "xmark")
-        button.setImage(image, for: .normal)
-        button.tintColor = UIColor(named: "White")
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
+    private let closeButton = UIButton(type: .system)
+    private let logo = UIImageView()
+    private let emailTextField = UITextField()
+    private let passwordTextField = UITextField()
+    private let loginButton = UIButton(type: .system)
+    private let registerButton = UIButton(type: .system)
     
-    private let logoImageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "drinkme"))
-        imageView.contentMode = .scaleAspectFit
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
-    }()
-    
-    private let emailTextField: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "Email или username"
-        textField.borderStyle = .roundedRect
-        textField.autocapitalizationType = .none
-        textField.autocorrectionType = .no
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        return textField
-    }()
-    
-    private let passwordTextField: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "Пароль"
-        textField.borderStyle = .roundedRect
-        textField.isSecureTextEntry = true
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        return textField
-    }()
-    
-    private let loginButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("Войти", for: .normal)
-        button.setTitleColor(UIColor(named: "White"), for: .normal)
-        button.backgroundColor = UIColor(named: "AccentColor")
-        button.layer.cornerRadius = 10
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
-    private let registerButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("Создать аккаунт", for: .normal)
-        button.setTitleColor(UIColor(named: "AccentColor"), for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .bold)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(named: "BackgroundColor")
         setupUI()
     }
     
+    // MARK: - UI setup
     private func setupUI() {
+        view.backgroundColor = .dark
+        
+        // closeButton
+        closeButton.setImage(UIImage(systemName: "xmark"), for: .normal)
+        closeButton.tintColor = .smoke
+        closeButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(closeButton)
-        view.addSubview(logoImageView)
+        
+        // logo
+        logo.image = UIImage(named: "logo")
+        logo.contentMode = .scaleAspectFit
+        logo.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(logo)
+        
+        // email input
+        emailTextField.placeholder = "Email или username"
+        emailTextField.borderStyle = .roundedRect
+        emailTextField.autocapitalizationType = .none
+        emailTextField.autocorrectionType = .no
+        emailTextField.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(emailTextField)
+        
+        // password
+        passwordTextField.placeholder = "Пароль"
+        passwordTextField.borderStyle = .roundedRect
+        passwordTextField.isSecureTextEntry = true
+        passwordTextField.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(passwordTextField)
+        
+        // login button
+        loginButton.setTitle("Войти", for: .normal)
+        loginButton.setTitleColor(.smoke, for: .normal)
+        loginButton.backgroundColor = .light
+        loginButton.layer.cornerRadius = 10
+        loginButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+        loginButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(loginButton)
+        
+        // register button
+        registerButton.setTitle("Создать аккаунт", for: .normal)
+        registerButton.setTitleColor(.light, for: .normal)
+        registerButton.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        registerButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(registerButton)
         
+        setupConstraints()
+    }
+    
+    private func setupConstraints() {
         NSLayoutConstraint.activate([
             closeButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
             closeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
             closeButton.widthAnchor.constraint(equalToConstant: 30),
             closeButton.heightAnchor.constraint(equalToConstant: 30),
             
-            logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 60),
-            logoImageView.heightAnchor.constraint(equalToConstant: 120),
+            logo.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            logo.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 60),
+            logo.heightAnchor.constraint(equalToConstant: 120),
             
-            emailTextField.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 70),
+            emailTextField.topAnchor.constraint(equalTo: logo.bottomAnchor, constant: 70),
             emailTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             emailTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             emailTextField.heightAnchor.constraint(equalToConstant: 44),
