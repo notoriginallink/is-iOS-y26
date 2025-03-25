@@ -10,8 +10,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let loginController = LoginViewController()
         let cocktailCardController = CocktailCardViewController(viewModel: CocktailViewModel.createExample())
+        let cocktailListController = CocktailListViewController()
+
         
-        window?.rootViewController = loginController
+        window?.rootViewController = cocktailListController
         window?.makeKeyAndVisible()
     }
 }
