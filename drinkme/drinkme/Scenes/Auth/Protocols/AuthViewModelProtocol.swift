@@ -22,6 +22,9 @@ protocol AuthViewModelProtocol {
     /// Функция для попытки входа
     func login()
     
-    /// Валидация введенных данных
-    func validateInput() -> Bool
+    /// Валидация имени пользователя (на сущестование и формат)
+    func validateUsername() -> (Bool, String?)
+    
+    /// Валидация пароля
+    func validatePassword() -> (Bool, String?)
 }

@@ -1,13 +1,8 @@
 class AuthViewModel: AuthViewModelProtocol {
     
     // MARK: - Properties
-    var username: String = "" {
-        didSet { onStateChanged?() }
-    }
-    
-    var password: String = "" {
-        didSet { onStateChanged?() }
-    }
+    var username: String = "";
+    var password: String = "";
     
     private(set) var isLoading: Bool = false {
         didSet { onStateChanged?() }
@@ -30,37 +25,60 @@ class AuthViewModel: AuthViewModelProtocol {
     
     // MARK: - Functions
     func login() {
-        guard validateInput() else {
-            errorMessage = "Неверный формат ввода"
+        var (isValid, error) = validateUsername()
+        guard isValid else {
+            errorMessage = error
             return
         }
+        
+        (isValid, error) = validatePassword()
+        guard isValid else {
+            errorMessage = error
+            return
+        }
+        
+        isLoading = true
+        errorMessage = nil
 
-        authService.login(username: username, password: password, completion: {result in
+        authService.login(username: username, password: password, completion: { [weak self] result in
+            guard let self = self else { return }
+            
+            self.isLoading = false
             if (result) {
                 self.onLoginSuccess?()
             } else {
-                self.errorMessage = "Пароль или логин неверны"
+                self.errorMessage = "Неверный пароль"
             }
         })
     }
     
-    func validateInput() -> Bool {
-        let usernameValid = username.isValidLength(leftBound: 3, rigthBound: 20) && username.isAlphanumeric
-        let passwordValid = password.isValidLength(leftBound: 6, rigthBound: 20)
-        return usernameValid && passwordValid
+    func validateUsername() -> (Bool, String?) {
+        if (username.isEmpty) {
+            return (false, "Введите имя пользователя")
+        }
+        
+        if (!username.isAlphanumeric) {
+            return (false, "Имя пользователя может содержать только буквы и цифры")
+        }
+        
+        // TODO: Проверка в базе данных, что пользователь с таким именем существует
+        if (false) {
+            return (false, "Пользователь с таким именем не найден")
+        }
+        
+        return (true, nil)
     }
-}
-
-
-// MARK: - String extensions
-extension String {
-    var isAlphanumeric: Bool {
-        return !isEmpty && range(of: "[^a-zA-Z0-9]", options: .regularExpression) == nil
+    
+    func validatePassword() -> (Bool, String?) {
+        if (password.isEmpty) {
+            return (false, "Введите пароль")
+        }
+        
+        if (!password.isValidLength(leftBound: 6, rigthBound: 20)) {
+            return (false, "Пароль должен содержать не менее 6 и не более 20 символов")
+        }
+        
+        return (true, nil)
     }
-}
-
-extension String {
-    func isValidLength(leftBound: Int, rigthBound: Int) -> Bool {
-        return count >= leftBound && count <= rigthBound
-    }
+    
 }
