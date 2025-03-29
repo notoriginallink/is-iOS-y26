@@ -1,5 +1,4 @@
 /// Сервис для процесса аутентификации
-protocol AuthServiceProtocol {
 
     /// Запуск процесса аутентификации
     /// - Parameter username имя пользователя
