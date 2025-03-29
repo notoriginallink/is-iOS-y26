@@ -13,8 +13,8 @@ protocol AuthViewModelProtocol {
     /// Сообщение об ошибке (если есть ошибка)
     var errorMessage: String? { get }
     
-    /// Обработчик изменения состояния при неудачной попытке входа
-    var onLoginFail: (() -> Void)? { get set }
+    /// Обработчик изменения состояния ( при вооде данных )
+    var onStateChanged: (() -> Void)? { get set }
     
     /// Обработчик изменения состояния при удачно попытке входа
     var onLoginSuccess: (() -> Void)? { get set }
