@@ -1,6 +1,6 @@
 import Foundation
 
-enum MeasureUnit {
+enum MeasureUnit: Codable {
     case millilitter;
     case gramm;
     case piece;
