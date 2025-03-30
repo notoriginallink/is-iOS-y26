@@ -16,6 +16,7 @@ class AuthViewModel: AuthViewModelProtocol {
     
     var onLoginSuccess: (() -> Void)?
     
+    // MARK: - Dependencies
     private let authService: AuthServiceProtocol
     
     // MARK: - Initializer
