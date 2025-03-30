@@ -1,6 +1,6 @@
 import Foundation
 
-struct CocktailCacheItem: Expirable {
+struct CocktailCacheItem {
     var createdAt: Date
     let cocktails: [Cocktail]
 }

@@ -5,10 +5,12 @@ class CocktailCache: PagedCache {
     
     // MARK: - Properties
     private var cache: Dictionary<String, CocktailCacheItem> = [:]
-    private let lifetime: TimeInterval = 60 * 5 // 5 минут
+    private let lifetime: TimeInterval
     
     // MARK: - Initializers
-    init() { }
+    init() {
+        self.lifetime = 60 * 5 // 5 минут
+    }
     
     init(lifetime: TimeInterval) {
         self.lifetime = lifetime

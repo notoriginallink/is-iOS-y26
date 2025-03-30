@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		609ED46A2D99F0E4005D22DF /* SwiftDotEnv in Frameworks */ = {isa = PBXBuildFile; productRef = 609ED4692D99F0E4005D22DF /* SwiftDotEnv */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		60C680002D74FA54005B9E40 /* drinkme.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = drinkme.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -36,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				609ED46A2D99F0E4005D22DF /* SwiftDotEnv in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +83,7 @@
 			);
 			name = drinkme;
 			packageProductDependencies = (
+				609ED4692D99F0E4005D22DF /* SwiftDotEnv */,
 			);
 			productName = edach;
 			productReference = 60C680002D74FA54005B9E40 /* drinkme.app */;
@@ -107,6 +113,9 @@
 			);
 			mainGroup = 60C67FF72D74FA54005B9E40;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				609ED4682D99F0E4005D22DF /* XCRemoteSwiftPackageReference "SwiftDotEnv" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 60C680012D74FA54005B9E40 /* Products */;
 			projectDirPath = "";
@@ -331,6 +340,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		609ED4682D99F0E4005D22DF /* XCRemoteSwiftPackageReference "SwiftDotEnv" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftOnTheServer/SwiftDotEnv.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		609ED4692D99F0E4005D22DF /* SwiftDotEnv */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 609ED4682D99F0E4005D22DF /* XCRemoteSwiftPackageReference "SwiftDotEnv" */;
+			productName = SwiftDotEnv;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 60C67FF82D74FA54005B9E40 /* Project object */;
 }

@@ -1,7 +1,7 @@
 import Foundation
 
 /// Кэш с использованием пагинации
-protocol PagedCache {
+protocol PagedCache<T> {
     /// Хранимый тип
     associatedtype T
     
