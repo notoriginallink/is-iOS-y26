@@ -72,6 +72,8 @@ class CocktailService: CocktailServiceProtocol {
                 completion(.failure(CocktailServiceError.serverError(response.statusCode)))
             }
         }
+        
+        task.resume()
     }
     
     func fetchCocktailDetails(id: String, completion: @escaping (Result<CocktailDetails, any Error>) -> Void) {
