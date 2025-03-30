@@ -2,8 +2,8 @@ import Foundation
 
 /// Модель пользователя
 struct User {
-    let id: String
+    let id: Int
     let username: String
-    let passwrods: String
+    let password: String
     let favoriteCocktails: [Int]
 }

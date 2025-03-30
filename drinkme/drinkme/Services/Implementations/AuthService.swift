@@ -10,11 +10,11 @@ class AuthService: AuthServiceProtocol {
     
     func login(username: String, password: String, completion: @escaping (Bool) -> Void) {
         // TODO: Тут надо будет доставать юзера из репозитория
-        let user = User(id: 1, username: "danya", password: "qwerty")
+        let user = User(id: 1, username: "danya", password: "qwerty", favoriteCocktails: [])
         
         let result = (user != nil && username == user.username && password == user.password)
         if (result) {
-            userContext.saveUser(User(id: 1, username: username, password: password))
+            userContext.saveUser(user)
         }
         
         completion(result)
