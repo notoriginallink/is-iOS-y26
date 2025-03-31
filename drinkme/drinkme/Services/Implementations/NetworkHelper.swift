@@ -1,10 +1,12 @@
 import Foundation
+import UIKit
 import DotEnv
 
 class NetworkHelper: NetworkHelperProtocol {
     
     // MARK: - Properties
-    private let baseURL = "https://alfa-itmo.ru/server/v1/storage";
+    private let baseURL = "https://alfa-itmo.ru/server/v1/storage"
+    private let baseImageURL = "https://notoriginallink.github.io/is-iOS-y26/docs" // TODO: возможно нужно будет изменить
     private let credentials: String
     private let session: URLSession
     
@@ -19,6 +21,7 @@ class NetworkHelper: NetworkHelperProtocol {
         credentials = "\(username):\(password)"
     }
     
+    // MARK: - Methods
     func getRequest<T>(
         endpoint: String,
         completion: @escaping (Result<T, any Error>) -> Void
@@ -76,6 +79,41 @@ class NetworkHelper: NetworkHelperProtocol {
                 completion(.failure(NetworkError.notFound))
             default:
                 completion(.failure(NetworkError.serverError(response.statusCode)))
+            }
+        }
+        
+        task.resume()
+    }
+    
+    func downloadImage(endpoint: String, completion: @escaping (Result<UIImage, Error>) -> Void) {
+        guard let url = URL(string: baseImageURL + endpoint) else {
+            completion(.failure(NetworkError.invalidURL))
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        
+        let task = session.dataTask(with: request) { data, response, error in
+            if let error = error {
+                completion(.failure(NetworkError.networkError(error.localizedDescription)))
+                return
+            }
+            
+            guard let response = response as? HTTPURLResponse else {
+                completion(.failure(NetworkError.networkError("Invalid response")))
+                return
+            }
+            
+            guard response.statusCode == 200, let data = data else {
+                completion(.failure(NetworkError.networkError("Invalid response")))
+                return
+            }
+            
+            if let image = UIImage(data: data) {
+                completion(.success(image))
+            } else {
+                completion(.failure(NetworkError.imageDecodingError))
             }
         }
         

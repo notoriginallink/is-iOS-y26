@@ -7,4 +7,5 @@ enum NetworkError: Error {
     case unauthorized
     case notFound
     case serverError(Int)
+    case imageDecodingError
 }
