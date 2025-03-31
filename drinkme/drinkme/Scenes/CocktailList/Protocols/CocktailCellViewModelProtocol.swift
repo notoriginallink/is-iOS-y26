@@ -6,4 +6,7 @@ protocol CocktailCellViewModelProtocol {
     
     /// Название картинки коктейля
     var imageUrl: String { get }
+    
+    /// Сложность приготовления
+    var difficulty: DifficultyLevel { get }
 }
