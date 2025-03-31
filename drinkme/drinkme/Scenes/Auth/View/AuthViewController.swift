@@ -80,8 +80,18 @@ class AuthViewController: UIViewController, AuthViewProtocol {
     
     // MARK: - Methods
     func setLoading(_ isLoading: Bool) {
-        isLoading ? authView.loadingIndicator.startAnimating() : authView.loadingIndicator.stopAnimating()
-        authView.loadingIndicator.isHidden = !isLoading
+        if (isLoading) {
+            authView.loadingIndicator.startAnimating()
+            authView.loadingIndicator.isHidden = false
+            authView.loginButton.isEnabled = false
+            authView.loginButton.backgroundColor = .medium
+            
+        } else {
+            authView.loadingIndicator.stopAnimating()
+            authView.loadingIndicator.isHidden = true
+            authView.loginButton.isEnabled = true
+            authView.loginButton.backgroundColor = .light
+        }
     }
     
     func showError(message: String) {
