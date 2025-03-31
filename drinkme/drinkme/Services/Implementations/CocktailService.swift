@@ -22,7 +22,7 @@ class CocktailService: CocktailServiceProtocol {
             return
         }
         
-        let endpoint = "/cocktails?page=\(page)&pageSize=\(pageSize)"
+        let endpoint = "/cocktails-page=\(page),pageSize=\(pageSize)"
         networkHelper.getRequest(endpoint: endpoint, completion: { (result: Result<[Cocktail], Error>) in
             switch result {
             case .success(let cocktails):

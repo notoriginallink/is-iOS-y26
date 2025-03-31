@@ -47,5 +47,4 @@ class AuthViewModel: AuthViewModelProtocol {
         case.failure(let error):
             self.errorMessage = error.localizedDescription
         }
-    }
 }

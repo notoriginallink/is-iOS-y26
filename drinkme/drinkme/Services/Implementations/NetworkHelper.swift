@@ -12,7 +12,7 @@ class NetworkHelper: NetworkHelperProtocol {
     init(session: URLSession = .shared) {
         self.session = session
         
-        let env = DotEnv(withFile: ".env")
+        let env = DotEnv(withFile: Bundle.main.path(forResource: ".env", ofType: nil) ?? "")
         guard let username = env.get("API_USERNAME"), let password = env.get("API_PASSWORD") else {
             fatalError("Could not read API credentials from .env")
         }
@@ -55,9 +55,21 @@ class NetworkHelper: NetworkHelperProtocol {
                     let decodedResponse = try JSONDecoder().decode(T.self, from: data)
                     completion(.success(decodedResponse))
                     return
-                } catch {
+                } catch DecodingError.typeMismatch(let type, let context) {
+                    print("[ERROR]: Тип данных не соответствует: \(type) в \(context)")
                     completion(.failure(NetworkError.decodingError))
-                }
+                  } catch DecodingError.valueNotFound(let type, let context) {
+                    print("[ERROR]: Значение не найдено: \(type) в \(context)")
+                    completion(.failure(NetworkError.decodingError))
+                  } catch DecodingError.keyNotFound(let key, let context) {
+                    print("[ERROR]: Ключ не найден: \(key) в \(context)")
+                    completion(.failure(NetworkError.decodingError))
+                  } catch DecodingError.dataCorrupted(let context) {
+                    print("[ERROR]: Данные повреждены: \(context)")
+                    completion(.failure(NetworkError.decodingError))
+                  } catch {
+                    completion(.failure(NetworkError.decodingError))
+                  }
             case 401:
                 completion(.failure(NetworkError.unauthorized))
             case 404:

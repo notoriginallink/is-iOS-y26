@@ -15,8 +15,9 @@ class AuthCoordinator: AuthCoordinatorProtocol {
     // MARK: - Implementation
     func start() {
         let userContext = UserContext()
-        let authService = AuthService(userContext: userContext)
+        let networkHelper = NetworkHelper()
         let contextValidator = DefaultAuthContextValidator()
+        let authService = AuthService(userContext: userContext, networkHelper: networkHelper)
         let viewModel = AuthViewModel(authService: authService, contextValidator: contextValidator)
         let authViewController = AuthViewController(viewModel: viewModel, coordinator: self)
         navigationController.pushViewController(authViewController, animated: true)
