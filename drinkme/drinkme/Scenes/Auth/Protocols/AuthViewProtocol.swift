@@ -13,6 +13,6 @@ protocol AuthViewProtocol: AnyObject {
     /// - Parameter isEnabled: true, если кнопка должна быть активна
     func updateLoginButton(isEnabled: Bool)
     
-    /// Переход на экран списка коктейлей
-    func navigateToCocktailList()
+    /// Действия при успешной авторизации
+    func loginSuccessful()
 }

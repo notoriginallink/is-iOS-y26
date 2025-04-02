@@ -1,3 +1,7 @@
 protocol AuthCoordinatorProtocol: Coordinator {
-    func goToCocktailList()
+    func authenticationDidComplete()
+}
+
+protocol AuthCoordinatorDelegate: AnyObject {
+    func completed(_ coordinator: AuthCoordinatorProtocol)
 }

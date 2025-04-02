@@ -1,7 +1,7 @@
 import UIKit
 
 class AppCoordinator: AppCoordinatorProtocol {
-
+    
     // MARK: - Properties
     var childCoordinators: [any Coordinator] = []
     var navigationController: UINavigationController
@@ -14,6 +14,7 @@ class AppCoordinator: AppCoordinatorProtocol {
     // MARK: - Implementation
     func showAuth() {
         let authCoordinator = AuthCoordinator(navigationController: navigationController)
+        authCoordinator.delegate = self
         childCoordinators.append(authCoordinator)
         authCoordinator.start()
     }
@@ -23,10 +24,19 @@ class AppCoordinator: AppCoordinatorProtocol {
     }
     
     func logout() {
-        navigationController.popToRootViewController(animated: true)
+        // TODO: добавить экран выхода
     }
         
     func start() {
         showAuth()
+    }
+}
+
+extension AppCoordinator: AuthCoordinatorDelegate {
+    func completed(_ coordinator: AuthCoordinatorProtocol) {
+        if let index = childCoordinators.firstIndex(where: { $0 === coordinator }) {
+            childCoordinators.remove(at: index)
+        }
+        showCocktailList()
     }
 }
