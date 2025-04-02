@@ -13,7 +13,7 @@ class AuthService: AuthServiceProtocol {
     }
     
     // MARK: - Methods
-    func login(username: String, password: String, completion: @escaping (Bool, String?) -> Void) {
+    func login(username: String, password: String, completion: @escaping (Result<Void, any Error>) -> Void) {
         let endpoint = "/users-\(username)"
         print("[DEBUG]: Send request to endpoint: \(endpoint)")
         networkHelper.getRequest(endpoint: endpoint, completion: { (result: Result<User, Error>) in
@@ -24,13 +24,13 @@ class AuthService: AuthServiceProtocol {
                     let credentialsValid = (username == user.username && password == user.password)
                     if (credentialsValid) {
                         self.userContext.saveUser(user)
-                        completion(true, nil)
+                        completion(.success(()))
                     } else {
-                        completion(false, "Пароль не верный")
+                        completion(.failure(AuthError.wrongPassword))
                     }
                 case.failure(let error):
                     print("[DEBUG]: login error -- \(error)")
-                    completion(false, "Пользователь не найден")
+                    completion(.failure(AuthError.unknownUser))
                 }
             }
         })
