@@ -2,10 +2,8 @@ import UIKit
 
 class ImageManager: ImageManagerProtocol {
 
-    // MARK: - Properties
-    private let cache = NSCache<NSString, UIImage>()
-    
     // MARK: - Dependencies
+    private let cache = ExpirableCache<ImageCacheItem>()
     private let networkHelper: NetworkHelperProtocol
     
     // MARK: - Initializers
@@ -15,21 +13,33 @@ class ImageManager: ImageManagerProtocol {
     
     // MARK: - Methods
     func getImage(url: String, completion: @escaping (UIImage?) -> Void) {
-        if let cachedImage = cache.object(forKey: url as NSString) {
-            completion(cachedImage)
+        if let cachedImage = cache.get(forKey: url) {
+            completion(cachedImage.image)
             return
         }
         
-        networkHelper.downloadImage(endpoint: url, completion: { (result: Result<UIImage, Error>) in
+        networkHelper.downloadImage(endpoint: url, completion: { [weak self] result in
             switch result {
             case.success(let image):
-                self.cache.setObject(image, forKey: url as NSString)
+                self?.cache.put(item: ImageCacheItem(createdAt: Date(), image: image), forKey: url)
                 completion(image)
                 return
-            case.failure(let error):
+            case.failure(_):
                 completion(nil)
                 return
             }
         })
+    }
+}
+
+extension ImageManager {
+    class ImageCacheItem: Expirable {
+        var createdAt: Date
+        var image: UIImage
+        
+        init(createdAt: Date, image: UIImage) {
+            self.createdAt = createdAt
+            self.image = image
+        }
     }
 }
