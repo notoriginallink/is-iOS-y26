@@ -15,7 +15,7 @@ class AuthCoordinator: AuthCoordinatorProtocol {
     // MARK: - Implementation
     func start() {
         let userContext = UserContext()
-        let networkHelper = NetworkHelper()
+        let networkHelper = NetworkHelper(session: URLSession(configuration: .default))
         let contextValidator = DefaultAuthContextValidator()
         let authService = AuthService(userContext: userContext, networkHelper: networkHelper)
         let viewModel = AuthViewModel(authService: authService, contextValidator: contextValidator)

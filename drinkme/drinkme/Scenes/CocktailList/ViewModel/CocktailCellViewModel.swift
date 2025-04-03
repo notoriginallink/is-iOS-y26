@@ -1,4 +1,4 @@
-class CocktailCellViewModel: CocktailCellViewModelProtocol {
+struct CocktailCellViewModel: CocktailCellViewModelProtocol {
     
     // MARK: - Properties
     var name: String

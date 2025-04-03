@@ -10,7 +10,7 @@ class NetworkHelper: NetworkHelperProtocol {
     private let session: URLSession
     
     // MARK: - Initializers
-    init(session: URLSession = .shared) {
+    init(session: URLSession) {
         self.session = session
         
         guard let username = Bundle.main.object(forInfoDictionaryKey: "API_USERNAME") as? String,
