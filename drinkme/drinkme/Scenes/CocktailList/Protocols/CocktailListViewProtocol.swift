@@ -12,7 +12,7 @@ protocol CocktailListViewProtocol: AnyObject {
     /// - Parameter message: Текст сообщения
     func showError(_ message: String)
     
-    /// Переходит на экран карточки коктейля
+    /// Действия при нажании на карточку коктейля
     /// - Parameter cocktailId: id коктейля
-    func navigateToCocktailDetail(cocktailId: String)
+    func cocktailCardTapped(cocktailId: String)
 }

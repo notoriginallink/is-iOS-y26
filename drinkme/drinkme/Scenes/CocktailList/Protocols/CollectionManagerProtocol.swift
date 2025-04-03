@@ -1,0 +1,9 @@
+
+protocol CollectionManagerProtocol {
+    
+}
+
+
+protocol CollectionManagerDelegate {
+    
+}
