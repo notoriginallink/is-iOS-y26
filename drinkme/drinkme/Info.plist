@@ -19,5 +19,9 @@
 			</array>
 		</dict>
 	</dict>
+    <key>API_USERNAME</key>
+    <string>$(API_USERNAME)</string>
+    <key>API_PASSWORD</key>
+    <string>$(API_PASSWORD)</string>
 </dict>
 </plist>

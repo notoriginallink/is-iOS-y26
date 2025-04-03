@@ -1,6 +1,5 @@
 import Foundation
 import UIKit
-import DotEnv
 
 class NetworkHelper: NetworkHelperProtocol {
     
@@ -14,18 +13,19 @@ class NetworkHelper: NetworkHelperProtocol {
     init(session: URLSession = .shared) {
         self.session = session
         
-        let env = DotEnv(withFile: Bundle.main.path(forResource: ".env", ofType: nil) ?? "")
-        guard let username = env.get("API_USERNAME"), let password = env.get("API_PASSWORD") else {
-            fatalError("Could not read API credentials from .env")
+        guard let username = Bundle.main.object(forInfoDictionaryKey: "API_USERNAME") as? String,
+                let password = Bundle.main.object(forInfoDictionaryKey: "API_PASSWORD") as? String else {
+            fatalError("Could not read API credentials from Info.plist")
         }
         credentials = "\(username):\(password)"
+        print(credentials)
     }
     
     // MARK: - Methods
     func getRequest<T>(
         endpoint: String,
         completion: @escaping (Result<T, any Error>) -> Void
-    ) where T : Decodable, T : Encodable {
+    ) where T : Decodable {
         guard let url = URL(string: baseURL + endpoint) else {
             completion(.failure(NetworkError.invalidURL))
             return
