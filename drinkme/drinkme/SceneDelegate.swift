@@ -9,7 +9,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
     
         let navigationController = UINavigationController()
-        // TODO: Создать координатор, когда будут реализации
+        appCoordinator = AppCoordinator(navigationController: navigationController)
         appCoordinator?.start()
         
         let window = UIWindow(windowScene: scene)

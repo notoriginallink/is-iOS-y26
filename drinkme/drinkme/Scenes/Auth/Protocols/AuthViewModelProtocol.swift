@@ -1,13 +1,10 @@
 /// Протокол ViewModel для экрана авторизации
 protocol AuthViewModelProtocol {
     
-    /// Введенное имя пользователя
-    var username: String { get set }
+    /// Контекст авторизации
+    var authContext: AuthContext { get set }
     
-    /// Введенный пароль
-    var password: String { get set }
-    
-    /// Происходит ли сейчас процесс аутентификации
+    /// Происходит ли сейчас процесс авторизации
     var isLoading: Bool { get }
     
     /// Сообщение об ошибке (если есть ошибка)
@@ -21,7 +18,4 @@ protocol AuthViewModelProtocol {
     
     /// Функция для попытки входа
     func login()
-    
-    /// Валидация введенных данных
-    func validateInput() -> Bool
 }
