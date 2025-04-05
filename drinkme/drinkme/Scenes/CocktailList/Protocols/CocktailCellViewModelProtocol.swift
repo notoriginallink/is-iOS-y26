@@ -5,5 +5,8 @@ protocol CocktailCellViewModelProtocol {
     var name: String { get }
     
     /// Название картинки коктейля
-    var imageName: String { get } // TODO: позже поменять на url?
+    var imageUrl: String { get }
+    
+    /// Сложность приготовления
+    var difficulty: DifficultyLevel { get }
 }
