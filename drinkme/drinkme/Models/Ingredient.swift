@@ -1,6 +1,6 @@
 import Foundation
 
-struct Ingredient {
+struct Ingredient: Codable {
     let name: String;
     let amount: Int;
     let unit: MeasureUnit;

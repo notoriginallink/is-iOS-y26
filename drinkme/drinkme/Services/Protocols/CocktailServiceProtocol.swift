@@ -4,8 +4,10 @@ import Foundation
 protocol CocktailServiceProtocol {
     
     /// Получает список коктейлей
+    /// - Parameter page: Номер страницы
+    /// - Parameter pageSize: Размер страницы
     /// - Parameter completion: Обработчик завершения с результатом получения списка коктейлей
-    func fetchCocktails(completion: @escaping (Result<[Cocktail], Error>) -> Void)
+    func fetchCocktails(page: Int, pageSize: Int, completion: @escaping (Result<[Cocktail], Error>) -> Void)
     
     /// Получает информацию о коктейле
     /// - Parameters:

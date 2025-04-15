@@ -1,4 +1,4 @@
-enum DifficultyLevel {
+enum DifficultyLevel: Codable {
     case easy;
     case medium;
     case hard;
