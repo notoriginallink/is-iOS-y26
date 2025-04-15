@@ -12,6 +12,7 @@ class CocktailListViewController: UIViewController, CocktailListViewProtocol {
         self.viewModel = viewModel
         self.collectionManager = collectionManager
         self.coordinator = coordinator
+        super.init()
     }
     
     required init?(coder: NSCoder) {
@@ -49,8 +50,8 @@ class CocktailListViewController: UIViewController, CocktailListViewProtocol {
     
     // MARK: - Methods
     func reloadCocktails() {
-        let viewModels = viewModel.getCocktailCellViewModels()
-        tableManager.updateData(with: viewModels)
+//        let viewModels = viewModel.getCocktailCellViewModels()
+//        tableManager.updateData(with: viewModels)
     }
     
     func setLoading(_ isLoading: Bool) {

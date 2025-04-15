@@ -1,5 +1,4 @@
 import Foundation
-import DotEnv
 
 class CocktailService: CocktailServiceProtocol {
     

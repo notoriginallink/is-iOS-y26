@@ -55,8 +55,8 @@ class AuthView: UIView {
         
         // login button
         loginButton.setTitle("Войти", for: .normal)
-        loginButton.setTitleColor(.smokewhite, for: .normal)
-        loginButton.backgroundColor = .light
+        loginButton.setTitleColor(UIColor.smokewhite, for: .normal)
+        loginButton.backgroundColor = UIColor.light
         loginButton.layer.cornerRadius = 10
         loginButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
         loginButton.translatesAutoresizingMaskIntoConstraints = false
