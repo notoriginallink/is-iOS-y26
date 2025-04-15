@@ -106,3 +106,4 @@ class AuthViewController: UIViewController, AuthViewProtocol {
         coordinator?.authenticationDidComplete()
     }
 }
+

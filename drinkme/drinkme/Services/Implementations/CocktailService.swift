@@ -22,9 +22,11 @@ class CocktailService: CocktailServiceProtocol {
         }
         
         let endpoint = "/cocktails-page=\(page),pageSize=\(pageSize)"
+        print("[CocktailService | INFO]: sending request to \(endpoint)")
         networkHelper.getRequest(endpoint: endpoint, completion: { (result: Result<[Cocktail], Error>) in
             switch result {
             case .success(let cocktails):
+                print("[INFO]: got \(cocktails.count) cocktails: \(cocktails.map({ $0.name }))")
                 self.cache.put(items: cocktails, page: page, pageSize: pageSize)
                 completion(.success(cocktails))
             case .failure(let error):

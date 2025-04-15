@@ -14,5 +14,5 @@ protocol CocktailListViewProtocol: AnyObject {
     
     /// Действия при нажании на карточку коктейля
     /// - Parameter cocktailId: id коктейля
-    func cocktailCardTapped(cocktailId: String)
+    func cocktailCardTapped(cocktailId: Int)
 }

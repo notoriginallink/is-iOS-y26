@@ -4,15 +4,15 @@ class CocktailListViewController: UIViewController, CocktailListViewProtocol {
     
     // MARK: - Dependencies
     private var viewModel: CocktailListViewModelProtocol
-    private let collectionManager: CollectionManagerProtocol
+    private let collectionManager: CollectionManager<CocktailCellView>
     private weak var coordinator: ListCoordinatorProtocol?
     
     // MARK: - Initializers
-    init(viewModel: CocktailListViewModelProtocol, collectionManager: CollectionManagerProtocol, coordinator: ListCoordinatorProtocol? = nil) {
+    init(viewModel: CocktailListViewModelProtocol, collectionManager: CollectionManager<CocktailCellView>, coordinator: ListCoordinatorProtocol? = nil) {
         self.viewModel = viewModel
         self.collectionManager = collectionManager
         self.coordinator = coordinator
-        super.init()
+        super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
@@ -26,7 +26,13 @@ class CocktailListViewController: UIViewController, CocktailListViewProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionManager.delegate = self
+        if let listView = view as? CocktailListView {
+            collectionManager.attach(to: listView.collectionView)
+        }
         setupBindings()
+        
+        viewModel.loadCocktails()
     }
     
     // MARK: - Bindings
@@ -46,12 +52,17 @@ class CocktailListViewController: UIViewController, CocktailListViewProtocol {
                 }
             }
         }
+        
+        viewModel.onCocktailsLoaded = { [weak self] in
+            guard let self = self else {return}
+            
+            self.reloadCocktails()
+        }
     }
     
     // MARK: - Methods
     func reloadCocktails() {
-//        let viewModels = viewModel.getCocktailCellViewModels()
-//        tableManager.updateData(with: viewModels)
+        collectionManager.updateItems(viewModel.cocktails)
     }
     
     func setLoading(_ isLoading: Bool) {
@@ -64,7 +75,13 @@ class CocktailListViewController: UIViewController, CocktailListViewProtocol {
         present(alert, animated: true)
     }
     
-    func cocktailCardTapped(cocktailId: String) {
+    func cocktailCardTapped(cocktailId: Int) {
         coordinator?.showCard(with: cocktailId)
+    }
+}
+
+extension CocktailListViewController: CollectionManagerDelegate {
+    func didSelectItem(with id: Int) {
+        coordinator?.showCard(with: id)
     }
 }

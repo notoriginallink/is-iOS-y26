@@ -1,7 +1,7 @@
 class CocktailListViewModel: CocktailListViewModelProtocol {
     
     // MARK: - Properties
-    var cocktails: [Cocktail] = []
+    var cocktails: [CocktailCellViewModel] = []
     var page: Int = 1
     var pageSize: Int = 10
     
@@ -14,6 +14,8 @@ class CocktailListViewModel: CocktailListViewModelProtocol {
     }
     
     var onStateChanged: (() -> Void)?
+    
+    var onCocktailsLoaded: (() -> Void)?
     
     // MARK: - Dependencies
     private let cocktailsService: CocktailServiceProtocol
@@ -30,9 +32,11 @@ class CocktailListViewModel: CocktailListViewModelProtocol {
             self?.isLoading = false
             switch (result) {
             case.success(let newCocktails):
-                self?.cocktails.append(contentsOf: newCocktails)
+                print("[DEBUG | ViewModel]: Got \(newCocktails.count) new cocktails in ViewModel: \(newCocktails.map({$0.name}))")
+                let models = self?.mapToViewModel(entities: newCocktails)
+                self?.cocktails.append(contentsOf: models!)
                 self?.errorMessage = nil
-                self?.page += 1
+                self?.onCocktailsLoaded?()
             case.failure(let error):
                 self?.errorMessage = error.localizedDescription
             }
@@ -40,8 +44,17 @@ class CocktailListViewModel: CocktailListViewModelProtocol {
         }
     }
     
+    // TODO: Deprecated?
     func cocktailViewModel(at index: Int) -> any CocktailCellViewModelProtocol {
         let cocktail = cocktails[index]
-        return CocktailCellViewModel(name: cocktail.name, imageUrl: cocktail.imageUrl, difficulty: cocktail.difficulty)
+        return CocktailCellViewModel(id: cocktail.id, name: cocktail.name, imageUrl: cocktail.imageUrl, difficulty: cocktail.difficulty)
+    }
+    
+    private func mapToViewModel(entities: [Cocktail]) -> [CocktailCellViewModel] {
+        var result: [CocktailCellViewModel] = []
+        for model in entities {
+            result.append(CocktailCellViewModel(id: model.id, name: model.name, imageUrl: model.imageUrl, difficulty: model.difficulty))
+        }
+        return result
     }
 }

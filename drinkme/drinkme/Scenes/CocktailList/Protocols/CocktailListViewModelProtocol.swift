@@ -2,7 +2,7 @@
 protocol CocktailListViewModelProtocol {
     
     /// Список коктейлей
-    var cocktails: [Cocktail] { get }
+    var cocktails: [CocktailCellViewModel] { get }
     
     /// Флаг, указывающий на процесс загрузки
     var isLoading: Bool { get }
@@ -12,6 +12,8 @@ protocol CocktailListViewModelProtocol {
     
     /// Обработчик изменения состояния
     var onStateChanged: (() -> Void)? { get set }
+    
+    var onCocktailsLoaded: (() -> Void)? { get set }
     
     /// Загружает список коктейлей
     func loadCocktails()
