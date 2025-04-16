@@ -5,7 +5,6 @@ class NetworkHelper: NetworkHelperProtocol {
     
     // MARK: - Properties
     private let baseURL = "https://alfa-itmo.ru/server/v1/storage"
-    private let baseImageURL = "https://notoriginallink.github.io/is-iOS-y26/docs" // TODO: возможно нужно будет изменить
     private let credentials: String
     private let session: URLSession
     
@@ -85,8 +84,8 @@ class NetworkHelper: NetworkHelperProtocol {
         task.resume()
     }
     
-    func downloadImage(endpoint: String, completion: @escaping (Result<UIImage, Error>) -> Void) {
-        guard let url = URL(string: baseImageURL + endpoint) else {
+    func downloadImage(url: String, completion: @escaping (Result<UIImage, Error>) -> Void) {
+        guard let url = URL(string: url) else {
             completion(.failure(NetworkError.invalidURL))
             return
         }

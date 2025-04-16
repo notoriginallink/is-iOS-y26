@@ -7,13 +7,7 @@ final class CocktailListView: UIView {
     let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.minimumLineSpacing = 12
-        layout.minimumInteritemSpacing = 8
-        layout.sectionInset = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
-        
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        return collectionView
+        return UICollectionView(frame: .zero, collectionViewLayout: layout)
     }()
     
     // MARK: - Initializers
@@ -28,9 +22,10 @@ final class CocktailListView: UIView {
 
     // MARK: - Setup
     private func setup() {
-        backgroundColor = UIColor.smokewhite
+        backgroundColor = .smokewhite
         
-        collectionView.backgroundColor = UIColor.smokewhite
+        collectionView.backgroundColor = .smokewhite
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(collectionView)
         
         setupConstraints()

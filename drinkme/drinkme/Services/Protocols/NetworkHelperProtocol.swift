@@ -11,5 +11,5 @@ protocol NetworkHelperProtocol {
     /// Получает изображение по URL
     /// - Parameter endpoint: Адрес изображения
     /// - Parameter completion: Обработчик результата запроса
-    func downloadImage(endpoint: String, completion: @escaping (Result<UIImage, Error>) -> Void)
+    func downloadImage(url: String, completion: @escaping (Result<UIImage, Error>) -> Void)
 }

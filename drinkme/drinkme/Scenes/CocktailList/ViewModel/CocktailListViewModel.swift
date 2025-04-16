@@ -15,8 +15,6 @@ class CocktailListViewModel: CocktailListViewModelProtocol {
     
     var onStateChanged: (() -> Void)?
     
-    var onCocktailsLoaded: (() -> Void)?
-    
     // MARK: - Dependencies
     private let cocktailsService: CocktailServiceProtocol
     
@@ -29,18 +27,15 @@ class CocktailListViewModel: CocktailListViewModelProtocol {
     func loadCocktails() {
         isLoading = true
         cocktailsService.fetchCocktails(page: page, pageSize: pageSize) { [weak self] result in
-            self?.isLoading = false
             switch (result) {
             case.success(let newCocktails):
                 print("[DEBUG | ViewModel]: Got \(newCocktails.count) new cocktails in ViewModel: \(newCocktails.map({$0.name}))")
                 let models = self?.mapToViewModel(entities: newCocktails)
                 self?.cocktails.append(contentsOf: models!)
-                self?.errorMessage = nil
-                self?.onCocktailsLoaded?()
             case.failure(let error):
                 self?.errorMessage = error.localizedDescription
             }
-            self?.onStateChanged?()
+            self?.isLoading = false
         }
     }
     

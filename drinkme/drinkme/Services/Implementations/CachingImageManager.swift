@@ -1,6 +1,13 @@
 import UIKit
 
 class ImageManager: ImageManagerProtocol {
+    
+    // MARK: - Singleton
+    static let shared: ImageManager = {
+        // Инициализация ImageManager с помощью зависимости networkHelper
+        let networkHelper = NetworkHelper(session: URLSession(configuration: .default))
+        return ImageManager(networkHelper: networkHelper)
+    }()
 
     // MARK: - Dependencies
     private let cache = ExpirableCache<ImageCacheItem>()
@@ -14,11 +21,12 @@ class ImageManager: ImageManagerProtocol {
     // MARK: - Methods
     func getImage(url: String, completion: @escaping (UIImage?) -> Void) {
         if let cachedImage = cache.get(forKey: url) {
+            print("[INFO | ImageManager]: Cache hit for image URL=\(url)")
             completion(cachedImage.image)
             return
         }
         
-        networkHelper.downloadImage(endpoint: url, completion: { [weak self] result in
+        networkHelper.downloadImage(url: url, completion: { [weak self] result in
             switch result {
             case.success(let image):
                 self?.cache.put(item: ImageCacheItem(createdAt: Date(), image: image), forKey: url)

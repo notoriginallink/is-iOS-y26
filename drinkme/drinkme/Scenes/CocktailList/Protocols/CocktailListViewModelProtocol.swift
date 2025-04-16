@@ -13,8 +13,6 @@ protocol CocktailListViewModelProtocol {
     /// Обработчик изменения состояния
     var onStateChanged: (() -> Void)? { get set }
     
-    var onCocktailsLoaded: (() -> Void)? { get set }
-    
     /// Загружает список коктейлей
     func loadCocktails()
     

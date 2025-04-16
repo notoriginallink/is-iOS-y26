@@ -1,6 +1,7 @@
 import UIKit
 
-class CollectionManager<View: UIView & ConfigurableView>: NSObject, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class CollectionManager<View: UIView & ConfigurableView>: NSObject, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, CollectionManagerProtocol {
+    typealias View = View
     typealias ViewModel = View.ViewModel
     typealias Cell = GenericCell<View, ViewModel>
 
@@ -20,14 +21,14 @@ class CollectionManager<View: UIView & ConfigurableView>: NSObject, UICollection
         print("[DEBUG | CollectionManager]: Call updateItems")
         self.items = items
         DispatchQueue.main.async {
+            self.collectionView?.dataSource = self
             self.collectionView?.reloadData()
         }
     }
 
     // MARK: - UICollectionViewDataSource
-
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        items.count
+        return items.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -40,15 +41,27 @@ class CollectionManager<View: UIView & ConfigurableView>: NSObject, UICollection
         return cell
     }
 
-    // MARK: - UICollectionViewDelegateFlowLayout (при необходимости)
-
+    // MARK: - UICollectionViewDelegateFlowLayout
+    // Размеры ячеек
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        // Сделай универсально или кастомизируй
-        return CGSize(width: collectionView.bounds.width, height: 100)
+        let width = collectionView.frame.width - 50
+        let height: CGFloat = 100
+        return CGSize(width: width, height: height)
+    }
+    
+    // Отступы коллекции
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 25)
+    }
+    
+    // расстояние между элементами
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 20
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         delegate?.didSelectItem(with: indexPath.item)
     }
 }
+
 

@@ -31,7 +31,6 @@ class CocktailListViewController: UIViewController, CocktailListViewProtocol {
             collectionManager.attach(to: listView.collectionView)
         }
         setupBindings()
-        
         viewModel.loadCocktails()
     }
     
@@ -52,12 +51,6 @@ class CocktailListViewController: UIViewController, CocktailListViewProtocol {
                 }
             }
         }
-        
-        viewModel.onCocktailsLoaded = { [weak self] in
-            guard let self = self else {return}
-            
-            self.reloadCocktails()
-        }
     }
     
     // MARK: - Methods
@@ -76,6 +69,7 @@ class CocktailListViewController: UIViewController, CocktailListViewProtocol {
     }
     
     func cocktailCardTapped(cocktailId: Int) {
+        print("[DEBUG | ListController]: did select card ID=\(cocktailId)")
         coordinator?.showCard(with: cocktailId)
     }
 }
