@@ -1,6 +1,6 @@
 import UIKit
 
-/// Весь UI относящийся к экрану c коктейлями
+/// Весь UI, относящийся к экрану c коктейлями
 final class CocktailListView: UIView {
     
     // MARK: - Properties
@@ -10,6 +10,10 @@ final class CocktailListView: UIView {
         return UICollectionView(frame: .zero, collectionViewLayout: layout)
     }()
     
+    var onRefresh: (() -> Void)?
+    
+    private let refreshControl = UIRefreshControl()
+
     // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -26,7 +30,11 @@ final class CocktailListView: UIView {
         
         collectionView.backgroundColor = .smokewhite
         collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.alwaysBounceVertical = true
         addSubview(collectionView)
+
+        refreshControl.addTarget(self, action: #selector(refreshTriggered), for: .valueChanged)
+        collectionView.refreshControl = refreshControl
         
         setupConstraints()
     }
@@ -38,5 +46,14 @@ final class CocktailListView: UIView {
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
+    }
+
+    // MARK: - Actions
+    @objc private func refreshTriggered() {
+        onRefresh?()
+    }
+
+    func endRefreshing() {
+        refreshControl.endRefreshing()
     }
 }

@@ -29,7 +29,11 @@ class CocktailListViewController: UIViewController, CocktailListViewProtocol {
         collectionManager.delegate = self
         if let listView = view as? CocktailListView {
             collectionManager.attach(to: listView.collectionView)
+            listView.onRefresh = { [weak self] in
+                self?.viewModel.loadCocktails()
+            }
         }
+
         setupBindings()
         viewModel.loadCocktails()
     }
@@ -59,9 +63,15 @@ class CocktailListViewController: UIViewController, CocktailListViewProtocol {
     }
     
     func setLoading(_ isLoading: Bool) {
-        // TODO: Включать/выключать activity indicator
+        DispatchQueue.main.async {
+            if let listView = self.view as? CocktailListView {
+                if !isLoading {
+                    listView.endRefreshing()
+                }
+            }
+        }
     }
-    
+
     func showError(_ message: String) {
         let alert = UIAlertController(title: "Ошибка", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default))
@@ -76,6 +86,6 @@ class CocktailListViewController: UIViewController, CocktailListViewProtocol {
 
 extension CocktailListViewController: CollectionManagerDelegate {
     func didSelectItem(with id: Int) {
-        coordinator?.showCard(with: id)
+        cocktailCardTapped(cocktailId: id)
     }
 }

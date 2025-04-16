@@ -1,6 +1,6 @@
 import UIKit
 
-class CocktailCellView: UICollectionViewCell, ConfigurableView {
+class CocktailCellView: UIView, ConfigurableView {
     typealias ViewModel = CocktailCellViewModel
 
     // MARK: - Properties
@@ -20,40 +20,41 @@ class CocktailCellView: UICollectionViewCell, ConfigurableView {
     
     // MARK: - UI
     private func setupCell() {
-        // image
         image.contentMode = .scaleAspectFill
         image.translatesAutoresizingMaskIntoConstraints = false
+        image.isUserInteractionEnabled = false
         image.clipsToBounds = true
-        contentView.addSubview(image)
+        addSubview(image)
         
-        // name
         name.translatesAutoresizingMaskIntoConstraints = false
         name.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         name.textColor = .dark
-        contentView.addSubview(name)
+        addSubview(name)
         
-        // cell
+        // Тени
         self.layer.shadowColor = UIColor(named: "dark")?.cgColor
         self.layer.shadowOffset = CGSize(width: 1, height: 3)
         self.layer.shadowRadius = 5
         self.layer.shadowOpacity = 0.3
+        self.layer.cornerRadius = 15
+        self.layer.masksToBounds = false // Важно для отображения теней
         
-        contentView.layer.cornerRadius = 15
-        contentView.layer.masksToBounds = true
-        contentView.backgroundColor = .smokewhite
+        self.backgroundColor = .smokewhite
+        self.clipsToBounds = false // Чтобы тени не обрезались
         
         setupConstraints()
     }
+
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            image.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            image.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 15),
+            image.centerYAnchor.constraint(equalTo: centerYAnchor),
+            image.leftAnchor.constraint(equalTo: leftAnchor, constant: 15),
             image.heightAnchor.constraint(equalToConstant: 60),
             image.widthAnchor.constraint(equalToConstant: 60),
             
             name.leadingAnchor.constraint(equalTo: image.trailingAnchor, constant: 15),
-            name.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
+            name.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
     }
     
