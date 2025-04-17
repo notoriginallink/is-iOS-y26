@@ -6,17 +6,17 @@ class CocktailCellView: UIView, ConfigurableView {
     // MARK: - Properties
     private let image = UIImageView()
     private let name = UILabel()
-    private let imageManager: ImageManagerProtocol // TODO: подумать над тем, не отказаться ли в пользу Singleton
+    private let imageManager: ImageManagerProtocol
     
     // MARK: - Initialization
     override init(frame: CGRect) {
-        self.imageManager = ImageManager(networkHelper: NetworkHelper(session: URLSession(configuration: .default)))
+        self.imageManager = ImageManager()
         super.init(frame: frame)
         setupCell()
     }
     
     required init?(coder: NSCoder) {
-        self.imageManager = ImageManager(networkHelper: NetworkHelper(session: URLSession(configuration: .default)))
+        self.imageManager = ImageManager()
         super.init(coder: coder)
         setupCell()
     }
@@ -40,10 +40,10 @@ class CocktailCellView: UIView, ConfigurableView {
         self.layer.shadowRadius = 5
         self.layer.shadowOpacity = 0.3
         self.layer.cornerRadius = 15
-        self.layer.masksToBounds = false // Важно для отображения теней
+        self.layer.masksToBounds = false
         
         self.backgroundColor = .smokewhite
-        self.clipsToBounds = false // Чтобы тени не обрезались
+        self.clipsToBounds = false
         
         setupConstraints()
     }
@@ -64,7 +64,7 @@ class CocktailCellView: UIView, ConfigurableView {
     // MARK: - Methods
     func configure(with viewModel: CocktailCellViewModel) {
         name.text = viewModel.name
-        ImageManager.shared.getImage(url: viewModel.imageUrl) { image in
+        imageManager.getImage(url: viewModel.imageUrl) { image in
             DispatchQueue.main.async {
                 self.image.image = image
             }

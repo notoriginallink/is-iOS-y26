@@ -8,7 +8,7 @@ class CocktailListViewController: UIViewController, CocktailListViewProtocol {
     private weak var coordinator: ListCoordinatorProtocol?
     
     // MARK: - Initializers
-    init(viewModel: CocktailListViewModelProtocol, collectionManager: CollectionManager<CocktailCellView>, coordinator: ListCoordinatorProtocol? = nil) {
+    init(viewModel: CocktailListViewModelProtocol, collectionManager: CollectionManager<CocktailCellView>, coordinator: ListCoordinatorProtocol) {
         self.viewModel = viewModel
         self.collectionManager = collectionManager
         self.coordinator = coordinator
@@ -27,7 +27,6 @@ class CocktailListViewController: UIViewController, CocktailListViewProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupBindings()
-//        viewModel.reloadCocktails()
     }
     
     // MARK: - Bindings

@@ -23,7 +23,7 @@ class CocktailService: CocktailServiceProtocol {
         
         let endpoint = "/cocktails-page=\(page),pageSize=\(pageSize)"
         print("[INFO | CocktailService]: sending request to \(endpoint)")
-        networkHelper.getRequest(endpoint: endpoint, completion: { (result: Result<[Cocktail], Error>) in
+        networkHelper.getRequest(endpoint: endpoint) { (result: Result<[Cocktail], Error>) in
             switch result {
             case .success(let cocktails):
                 print("[INFO | CocktailService]: got \(cocktails.count) cocktails: \(cocktails.map({ $0.name }))")
@@ -32,10 +32,20 @@ class CocktailService: CocktailServiceProtocol {
             case .failure(let error):
                 completion(.failure(error))
             }
-        })
+        }
     }
     
-    func fetchCocktailDetails(id: String, completion: @escaping (Result<CocktailDetails, any Error>) -> Void) {
-        // TODO: Логика аналогичная верхнему методу
+    func fetchCocktailDetails(id: Int, completion: @escaping (Result<CocktailDetails, any Error>) -> Void) {
+        let endpoint = "/cocktailId=\(id)"
+        print("[INFO | CocktailService]: sending request to \(endpoint)")
+        networkHelper.getRequest(endpoint: endpoint) { (result: Result<CocktailDetails, Error>) in
+            switch (result) {
+            case.success(let cocktail):
+                completion(.success(cocktail))
+                return
+            case.failure(let error):
+                completion(.failure(error))
+            }
+        }
     }
 }

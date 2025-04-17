@@ -1,7 +1,7 @@
 import UIKit
 
 /// Обобщенный тип ячейки для коллекции
-class GenericCell<View: UIView & ConfigurableView, ViewModel>: UICollectionViewCell {
+class GenericCell<View: UIView & ConfigurableView, ViewModel>: UICollectionViewCell where View.ViewModel == ViewModel {
     
     static var reuseIdentifier: String {
         return String(describing: self)

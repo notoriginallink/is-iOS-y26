@@ -1,4 +1,5 @@
-struct CocktailCellViewModel: CocktailCellViewModelProtocol {
+struct CocktailCellViewModel: CocktailCellViewModelProtocol, Identifiable {
+    typealias ID = Int
     
     // MARK: - Properties
     var id: Int

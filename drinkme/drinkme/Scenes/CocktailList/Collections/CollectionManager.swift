@@ -72,7 +72,8 @@ class CollectionManager<View: UIView & ConfigurableView>: NSObject, UICollection
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("[DEBUG | CollectionManager]: didSelectItemAt \(indexPath.item)")
-        delegate?.didSelectItem(with: indexPath.item)
+        let item = items[indexPath.item]
+        delegate?.didSelectItem(with: item.id)
     }
 }
 
