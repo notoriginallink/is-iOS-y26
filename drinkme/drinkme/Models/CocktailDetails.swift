@@ -1,8 +1,10 @@
 import Foundation
 
 /// Подробная информация о коктейле
-struct CocktailDetails {
+struct CocktailDetails: Codable {
     let id: Int
+    let name: String
+    let imageUrl: String
     let description: String
     let ingredients: [Ingredient]
     let gear: [GearItem]

@@ -26,6 +26,7 @@ class AuthService: AuthServiceProtocol {
                         self.userContext.saveUser(user)
                         completion(.success(()))
                     } else {
+                        print("[DEBUG]: Failed. Expected password: \(user.password), actual: \(password)")
                         completion(.failure(AuthError.wrongPassword))
                     }
                 case.failure(let error):

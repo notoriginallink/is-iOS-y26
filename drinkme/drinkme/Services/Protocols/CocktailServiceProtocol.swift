@@ -13,5 +13,5 @@ protocol CocktailServiceProtocol {
     /// - Parameters:
     ///   - id: Идентификатор коктейля
     ///   - completion: Обработчик завершения с результатом получения информации о коктейле
-    func fetchCocktailDetails(id: String, completion: @escaping (Result<CocktailDetails, Error>) -> Void)
+    func fetchCocktailDetails(id: Int, completion: @escaping (Result<CocktailDetails, Error>) -> Void)
 }

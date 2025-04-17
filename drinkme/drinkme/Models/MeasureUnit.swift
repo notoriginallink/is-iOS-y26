@@ -1,7 +1,7 @@
 import Foundation
 
-enum MeasureUnit: Codable {
-    case millilitter;
-    case gramm;
+enum MeasureUnit: String, Codable {
+    case ml;
+    case g;
     case piece;
 }

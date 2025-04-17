@@ -1,4 +1,4 @@
-enum DifficultyLevel: Codable {
+enum DifficultyLevel: String, Codable {
     case easy;
     case medium;
     case hard;
