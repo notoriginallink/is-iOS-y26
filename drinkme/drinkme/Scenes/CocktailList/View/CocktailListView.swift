@@ -11,6 +11,7 @@ final class CocktailListView: UIView {
     }()
     
     var onRefresh: (() -> Void)?
+    var onError: ((UIAlertController) -> Void)?
     
     private let refreshControl = UIRefreshControl()
 
@@ -55,5 +56,11 @@ final class CocktailListView: UIView {
 
     func endRefreshing() {
         refreshControl.endRefreshing()
+    }
+
+    func setupError(message: String) {
+        let alert = UIAlertController(title: "!", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        onError?(alert)
     }
 }

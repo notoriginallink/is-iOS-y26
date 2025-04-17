@@ -18,7 +18,6 @@ class CollectionManager<View: UIView & ConfigurableView>: NSObject, UICollection
     }
 
     func updateItems(_ items: [ViewModel]) {
-        print("[DEBUG | CollectionManager]: Call updateItems")
         self.items = items
         DispatchQueue.main.async {
             self.collectionView?.dataSource = self
@@ -39,6 +38,18 @@ class CollectionManager<View: UIView & ConfigurableView>: NSObject, UICollection
         ) as! Cell
         cell.configure(with: viewModel)
         return cell
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard let collectionView = collectionView else { return }
+
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        let height = collectionView.frame.size.height
+
+        if offsetY > contentHeight - height  {
+            delegate?.didScrollToBottom()
+        }
     }
 
     // MARK: - UICollectionViewDelegateFlowLayout

@@ -6,14 +6,17 @@ class CocktailCellView: UIView, ConfigurableView {
     // MARK: - Properties
     private let image = UIImageView()
     private let name = UILabel()
+    private let imageManager: ImageManagerProtocol // TODO: подумать над тем, не отказаться ли в пользу Singleton
     
     // MARK: - Initialization
     override init(frame: CGRect) {
+        self.imageManager = ImageManager(networkHelper: NetworkHelper(session: URLSession(configuration: .default)))
         super.init(frame: frame)
         setupCell()
     }
     
     required init?(coder: NSCoder) {
+        self.imageManager = ImageManager(networkHelper: NetworkHelper(session: URLSession(configuration: .default)))
         super.init(coder: coder)
         setupCell()
     }

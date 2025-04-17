@@ -13,5 +13,6 @@ protocol CollectionManagerProtocol: AnyObject {
 
 protocol CollectionManagerDelegate: AnyObject {
     func didSelectItem(with id: Int)
+    func didScrollToBottom()
 }
 

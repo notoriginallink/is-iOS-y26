@@ -26,20 +26,26 @@ class CocktailListViewController: UIViewController, CocktailListViewProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionManager.delegate = self
-        if let listView = view as? CocktailListView {
-            collectionManager.attach(to: listView.collectionView)
-            listView.onRefresh = { [weak self] in
-                self?.viewModel.loadCocktails()
-            }
-        }
-
         setupBindings()
-        viewModel.loadCocktails()
+//        viewModel.reloadCocktails()
     }
     
     // MARK: - Bindings
     private func setupBindings() {
+        guard let view = view as? CocktailListView else {
+            fatalError("ListController view is not of type CocktailListView")
+        }
+        
+        collectionManager.delegate = self
+        collectionManager.attach(to: view.collectionView)
+        view.onRefresh = { [weak self] in
+            self?.viewModel.reloadCocktails()
+        }
+        
+        view.onError = {[weak self] alert in
+            self?.present(alert, animated: true)
+        }
+        
         viewModel.onStateChanged = { [weak self] in
             guard let self = self else { return }
             
@@ -64,18 +70,23 @@ class CocktailListViewController: UIViewController, CocktailListViewProtocol {
     
     func setLoading(_ isLoading: Bool) {
         DispatchQueue.main.async {
-            if let listView = self.view as? CocktailListView {
-                if !isLoading {
-                    listView.endRefreshing()
-                }
+            guard let view = self.view as? CocktailListView else {
+                return
+            }
+            if !isLoading {
+                view.endRefreshing()
             }
         }
     }
 
     func showError(_ message: String) {
-        let alert = UIAlertController(title: "Ошибка", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-        present(alert, animated: true)
+        DispatchQueue.main.async {
+            guard let view = self.view as? CocktailListView else {
+                return
+            }
+            
+            view.setupError(message: message)
+        }
     }
     
     func cocktailCardTapped(cocktailId: Int) {
@@ -87,5 +98,9 @@ class CocktailListViewController: UIViewController, CocktailListViewProtocol {
 extension CocktailListViewController: CollectionManagerDelegate {
     func didSelectItem(with id: Int) {
         cocktailCardTapped(cocktailId: id)
+    }
+    
+    func didScrollToBottom() {
+        viewModel.loadCocktails()
     }
 }
