@@ -1,6 +1,9 @@
 /// Протокол ViewModel для ячейки коктейля
 protocol CocktailCellViewModelProtocol {
     
+    /// ID коктейля
+    var id: Int { get }
+    
     /// Название коктейля
     var name: String { get }
     

@@ -31,7 +31,6 @@ class AuthViewController: UIViewController, AuthViewProtocol {
     }
     
     // MARK: - UI
-    
     private func updateUI() {
         authView.usernameTextField.text = viewModel.authContext.username
         authView.passwordTextField.text = viewModel.authContext.password
@@ -106,3 +105,4 @@ class AuthViewController: UIViewController, AuthViewProtocol {
         coordinator?.authenticationDidComplete()
     }
 }
+
