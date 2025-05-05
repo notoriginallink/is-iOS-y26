@@ -34,12 +34,21 @@ class AuthViewController: UIViewController, AuthViewProtocol {
     private func updateUI() {
         authView.usernameTextField.text = viewModel.authContext.username
         authView.passwordTextField.text = viewModel.authContext.password
+        
+        // configure login button
         authView.loginButton.configure(with: DS.ButtonViewModel(
             title: "Войти",
             style: .primary,
             size: .large,
             state: viewModel.isLoading ? .inactive : .active))
+        
+        // configure error label
         authView.errorLabel.text = viewModel.errorMessage
+        authView.errorLabel.configure(with: DS.LabelViewModel.init(
+            text: viewModel.errorMessage,
+            style: .error,
+            size: .medium))
+        
         setLoading(viewModel.isLoading)
     }
     

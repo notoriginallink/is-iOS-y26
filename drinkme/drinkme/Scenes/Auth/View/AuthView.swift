@@ -3,21 +3,27 @@ import UIKit
 class AuthView: UIView {
     
     // MARK: - Subviews
+
+    var logo = UIImageView()
+    var usernameTextField = UITextField()
+    var passwordTextField = UITextField()
     var closeButton = DS.IconButton(viewModel: DS.IconButtonViewModel(
         icon: DS.Icon.x,
         size: .medium,
         style: .subtle,
         state: .active))
-    var logo = UIImageView()
-    var usernameTextField = UITextField()
-    var passwordTextField = UITextField()
-    
-    var loginButton = DS.Button(viewModel: DS.ButtonViewModel(title: "Войти", style: .primary, size: .large, state: .active))
-    var registerButton = DS.Button(viewModel: DS.ButtonViewModel(title: "Создать аккаунт", style: .subtle, size: .medium, state: .active))
-    
-    
+    var loginButton = DS.Button(viewModel: DS.ButtonViewModel(
+        title: "Войти",
+        style: .primary,
+        size: .large,
+        state: .active))
+    var registerButton = DS.Button(viewModel: DS.ButtonViewModel(
+        title: "Создать аккаунт",
+        style: .subtle,
+        size: .medium,
+        state: .active))
+    var errorLabel = DS.Label()
     var loadingIndicator = UIActivityIndicatorView(style: .medium)
-    var errorLabel = UILabel()
     
     // MARK: - Initializers
     override init(frame: CGRect) {
@@ -68,11 +74,6 @@ class AuthView: UIView {
         
         // errorLabel
         errorLabel.translatesAutoresizingMaskIntoConstraints = false
-        errorLabel.textColor = .red
-        errorLabel.font = UIFont.systemFont(ofSize: 14)
-        errorLabel.numberOfLines = 0
-        errorLabel.lineBreakMode = .byWordWrapping
-        errorLabel.textAlignment = .center
         addSubview(errorLabel)
         
         // loading indicator
