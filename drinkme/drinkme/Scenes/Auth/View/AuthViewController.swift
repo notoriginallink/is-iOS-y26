@@ -34,7 +34,11 @@ class AuthViewController: UIViewController, AuthViewProtocol {
     private func updateUI() {
         authView.usernameTextField.text = viewModel.authContext.username
         authView.passwordTextField.text = viewModel.authContext.password
-        authView.loginButton.isEnabled = !viewModel.isLoading
+        authView.loginButton.configure(with: DS.ButtonViewModel(
+            title: "Войти",
+            style: .primary,
+            size: .large,
+            state: viewModel.isLoading ? .inactive : .active))
         authView.errorLabel.text = viewModel.errorMessage
         setLoading(viewModel.isLoading)
     }
@@ -44,15 +48,14 @@ class AuthViewController: UIViewController, AuthViewProtocol {
         viewModel.onStateChanged = { [weak self] in
             self?.updateUI()
         }
-
+        
         viewModel.onLoginSuccess = { [weak self] in
-            print("[DEBUG]: Logged in successfully ") // TODO: debug info, remove later
             self?.loginSuccessful()
         }
         
-        authView.loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
-        authView.registerButton.addTarget(self, action: #selector(registerButtonTapped), for: .touchUpInside)
-        authView.closeButton.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
+        authView.loginButton.setTapAction{[weak self] in self?.loginButtonTapped()}
+        authView.registerButton.setTapAction { [weak self] in self?.registerButtonTapped()}
+        authView.closeButton.setTapAction{ [weak self] in self?.closeButtonTapped()}
         authView.usernameTextField.addTarget(self, action: #selector(usernameChanged), for: .editingChanged)
         authView.passwordTextField.addTarget(self, action: #selector(passwordChanged), for: .editingChanged)
     }
@@ -65,11 +68,11 @@ class AuthViewController: UIViewController, AuthViewProtocol {
         viewModel.authContext.password = authView.passwordTextField.text ?? ""
     }
     
-    @objc private func loginButtonTapped() {
+    private func loginButtonTapped() {
         viewModel.login()
     }
     
-    @objc private func registerButtonTapped() {
+    private func registerButtonTapped() {
         print("[DEBUG]: Registry button clicked") // TODO: Добавить переход на экран регистрации
     }
     
@@ -82,23 +85,20 @@ class AuthViewController: UIViewController, AuthViewProtocol {
         if (isLoading) {
             authView.loadingIndicator.startAnimating()
             authView.loadingIndicator.isHidden = false
-            authView.loginButton.isEnabled = false
-            authView.loginButton.backgroundColor = .medium
-            
+            authView.loginButton.configure(with: DS.ButtonViewModel(
+                title: "Войти",
+                style: .primary,
+                size: .large,
+                state: .inactive))
         } else {
             authView.loadingIndicator.stopAnimating()
             authView.loadingIndicator.isHidden = true
-            authView.loginButton.isEnabled = true
-            authView.loginButton.backgroundColor = .light
+            authView.loginButton.configure(with: DS.ButtonViewModel(
+                title: "Войти",
+                style: .primary,
+                size: .large,
+                state: .active))
         }
-    }
-    
-    func showError(message: String) {
-        authView.errorLabel.text = message
-    }
-    
-    func updateLoginButton(isEnabled: Bool) {
-        authView.loginButton.isEnabled = isEnabled
     }
     
     func loginSuccessful() {

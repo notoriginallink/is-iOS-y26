@@ -3,12 +3,19 @@ import UIKit
 class AuthView: UIView {
     
     // MARK: - Subviews
-    var closeButton = UIButton(type: .system)
+    var closeButton = DS.IconButton(viewModel: DS.IconButtonViewModel(
+        icon: DS.Icon.x,
+        size: .medium,
+        style: .subtle,
+        state: .active))
     var logo = UIImageView()
     var usernameTextField = UITextField()
     var passwordTextField = UITextField()
-    var loginButton = UIButton(type: .system)
-    var registerButton = UIButton(type: .system)
+    
+    var loginButton = DS.Button(viewModel: DS.ButtonViewModel(title: "Войти", style: .primary, size: .large, state: .active))
+    var registerButton = DS.Button(viewModel: DS.ButtonViewModel(title: "Создать аккаунт", style: .subtle, size: .medium, state: .active))
+    
+    
     var loadingIndicator = UIActivityIndicatorView(style: .medium)
     var errorLabel = UILabel()
     
@@ -27,8 +34,6 @@ class AuthView: UIView {
         backgroundColor = .dark
         
         // closeButton
-        closeButton.setImage(UIImage(systemName: "xmark"), for: .normal)
-        closeButton.tintColor = .smokewhite
         closeButton.translatesAutoresizingMaskIntoConstraints = false
         addSubview(closeButton)
         
@@ -54,18 +59,10 @@ class AuthView: UIView {
         addSubview(passwordTextField)
         
         // login button
-        loginButton.setTitle("Войти", for: .normal)
-        loginButton.setTitleColor(.smokewhite, for: .normal)
-        loginButton.backgroundColor = UIColor.light
-        loginButton.layer.cornerRadius = 10
-        loginButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
         loginButton.translatesAutoresizingMaskIntoConstraints = false
         addSubview(loginButton)
         
         // register button
-        registerButton.setTitle("Создать аккаунт", for: .normal)
-        registerButton.setTitleColor(.light, for: .normal)
-        registerButton.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         registerButton.translatesAutoresizingMaskIntoConstraints = false
         addSubview(registerButton)
         

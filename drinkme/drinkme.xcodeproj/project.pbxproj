@@ -6,7 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		3A626BAC2DC8DA2C00F1C49D /* Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 3A626BAB2DC8DA2200F1C49D /* Debug.xcconfig */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
+		3A626BAB2DC8DA2200F1C49D /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		60C680002D74FA54005B9E40 /* drinkme.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = drinkme.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -45,6 +50,7 @@
 		60C67FF72D74FA54005B9E40 = {
 			isa = PBXGroup;
 			children = (
+				3A626BAB2DC8DA2200F1C49D /* Debug.xcconfig */,
 				60C680022D74FA54005B9E40 /* drinkme */,
 				60C680012D74FA54005B9E40 /* Products */,
 			);
@@ -124,6 +130,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A626BAC2DC8DA2C00F1C49D /* Debug.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,8 +149,7 @@
 /* Begin XCBuildConfiguration section */
 		60C6802A2D74FA56005B9E40 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReferenceAnchor = 60C680022D74FA54005B9E40 /* drinkme */;
-			baseConfigurationReferenceRelativePath = Debug.xcconfig;
+			baseConfigurationReference = 3A626BAB2DC8DA2200F1C49D /* Debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -196,8 +202,7 @@
 		};
 		60C6802C2D74FA56005B9E40 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReferenceAnchor = 60C680022D74FA54005B9E40 /* drinkme */;
-			baseConfigurationReferenceRelativePath = Debug.xcconfig;
+			baseConfigurationReference = 3A626BAB2DC8DA2200F1C49D /* Debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
