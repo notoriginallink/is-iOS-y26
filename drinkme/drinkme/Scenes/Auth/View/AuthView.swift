@@ -3,14 +3,32 @@ import UIKit
 class AuthView: UIView {
     
     // MARK: - Subviews
-    var closeButton = UIButton(type: .system)
     var logo = UIImageView()
-    var usernameTextField = UITextField()
-    var passwordTextField = UITextField()
-    var loginButton = UIButton(type: .system)
-    var registerButton = UIButton(type: .system)
+    var usernameTextField = DS.TextInput(viewModel: .init(
+        placeholder: "Имя пользователя",
+        state: .active,
+        isSecure: false))
+    var passwordTextField = DS.TextInput(viewModel: .init(
+        placeholder: "Пароль",
+        state: .active,
+        isSecure: true))
+    var closeButton = DS.IconButton(viewModel: DS.IconButtonViewModel(
+        icon: DS.Icon.x,
+        size: .medium,
+        style: .subtle,
+        state: .active))
+    var loginButton = DS.Button(viewModel: DS.ButtonViewModel(
+        title: "Войти",
+        style: .primary,
+        size: .large,
+        state: .active))
+    var registerButton = DS.Button(viewModel: DS.ButtonViewModel(
+        title: "Создать аккаунт",
+        style: .subtle,
+        size: .medium,
+        state: .active))
+    var errorLabel = DS.Label()
     var loadingIndicator = UIActivityIndicatorView(style: .medium)
-    var errorLabel = UILabel()
     
     // MARK: - Initializers
     override init(frame: CGRect) {
@@ -25,63 +43,18 @@ class AuthView: UIView {
     // MARK: - Setup
     private func setup() {
         backgroundColor = .dark
-        
-        // closeButton
-        closeButton.setImage(UIImage(systemName: "xmark"), for: .normal)
-        closeButton.tintColor = .smokewhite
-        closeButton.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(closeButton)
+
+        [closeButton, logo, usernameTextField, passwordTextField, loginButton, registerButton, errorLabel, loadingIndicator].forEach {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            addSubview($0)
+        }
         
         // logo
         logo.image = UIImage(named: "logo")
         logo.contentMode = .scaleAspectFit
-        logo.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(logo)
-        
-        // email input
-        usernameTextField.placeholder = "Имя пользователя"
-        usernameTextField.borderStyle = .roundedRect
-        usernameTextField.autocapitalizationType = .none
-        usernameTextField.autocorrectionType = .no
-        usernameTextField.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(usernameTextField)
-        
-        // password
-        passwordTextField.placeholder = "Пароль"
-        passwordTextField.borderStyle = .roundedRect
-        passwordTextField.isSecureTextEntry = true
-        passwordTextField.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(passwordTextField)
-        
-        // login button
-        loginButton.setTitle("Войти", for: .normal)
-        loginButton.setTitleColor(.smokewhite, for: .normal)
-        loginButton.backgroundColor = UIColor.light
-        loginButton.layer.cornerRadius = 10
-        loginButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
-        loginButton.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(loginButton)
-        
-        // register button
-        registerButton.setTitle("Создать аккаунт", for: .normal)
-        registerButton.setTitleColor(.light, for: .normal)
-        registerButton.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .bold)
-        registerButton.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(registerButton)
-        
-        // errorLabel
-        errorLabel.translatesAutoresizingMaskIntoConstraints = false
-        errorLabel.textColor = .red
-        errorLabel.font = UIFont.systemFont(ofSize: 14)
-        errorLabel.numberOfLines = 0
-        errorLabel.lineBreakMode = .byWordWrapping
-        errorLabel.textAlignment = .center
-        addSubview(errorLabel)
         
         // loading indicator
         loadingIndicator.hidesWhenStopped = true
-        loadingIndicator.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(loadingIndicator)
         
         setupConstraints()
     }
