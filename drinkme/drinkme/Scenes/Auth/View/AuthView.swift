@@ -3,10 +3,15 @@ import UIKit
 class AuthView: UIView {
     
     // MARK: - Subviews
-
     var logo = UIImageView()
-    var usernameTextField = UITextField()
-    var passwordTextField = UITextField()
+    var usernameTextField = DS.TextInput(viewModel: .init(
+        placeholder: "Имя пользователя",
+        state: .active,
+        isSecure: false))
+    var passwordTextField = DS.TextInput(viewModel: .init(
+        placeholder: "Пароль",
+        state: .active,
+        isSecure: true))
     var closeButton = DS.IconButton(viewModel: DS.IconButtonViewModel(
         icon: DS.Icon.x,
         size: .medium,
@@ -38,48 +43,18 @@ class AuthView: UIView {
     // MARK: - Setup
     private func setup() {
         backgroundColor = .dark
-        
-        // closeButton
-        closeButton.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(closeButton)
+
+        [closeButton, logo, usernameTextField, passwordTextField, loginButton, registerButton, errorLabel, loadingIndicator].forEach {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            addSubview($0)
+        }
         
         // logo
         logo.image = UIImage(named: "logo")
         logo.contentMode = .scaleAspectFit
-        logo.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(logo)
-        
-        // email input
-        usernameTextField.placeholder = "Имя пользователя"
-        usernameTextField.borderStyle = .roundedRect
-        usernameTextField.autocapitalizationType = .none
-        usernameTextField.autocorrectionType = .no
-        usernameTextField.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(usernameTextField)
-        
-        // password
-        passwordTextField.placeholder = "Пароль"
-        passwordTextField.borderStyle = .roundedRect
-        passwordTextField.isSecureTextEntry = true
-        passwordTextField.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(passwordTextField)
-        
-        // login button
-        loginButton.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(loginButton)
-        
-        // register button
-        registerButton.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(registerButton)
-        
-        // errorLabel
-        errorLabel.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(errorLabel)
         
         // loading indicator
         loadingIndicator.hidesWhenStopped = true
-        loadingIndicator.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(loadingIndicator)
         
         setupConstraints()
     }

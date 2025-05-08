@@ -43,8 +43,7 @@ class AuthViewController: UIViewController, AuthViewProtocol {
             state: viewModel.isLoading ? .inactive : .active))
         
         // configure error label
-        authView.errorLabel.text = viewModel.errorMessage
-        authView.errorLabel.configure(with: DS.LabelViewModel.init(
+        authView.errorLabel.configure(with: DS.LabelViewModel(
             text: viewModel.errorMessage,
             style: .error,
             size: .medium))

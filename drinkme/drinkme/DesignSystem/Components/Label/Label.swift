@@ -22,7 +22,6 @@ extension DS {
             // TODO: Возможно эти свойства вынести в настройку через style
             numberOfLines = 0
             lineBreakMode = .byWordWrapping
-            textAlignment = .center
         }
         
         // MARK: - Config
@@ -40,12 +39,16 @@ extension DS {
             
             switch viewModel.style {
             case .primary:
+                textAlignment = .left
                 textColor = Colors.dark
             case .secondary:
+                textAlignment = .left
                 textColor = Colors.basic
             case .success:
+                textAlignment = .center
                 textColor = Colors.light
             case .error:
+                textAlignment = .center
                 textColor = Colors.red
             }
         }
