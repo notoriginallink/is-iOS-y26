@@ -5,7 +5,7 @@ class CocktailCellView: UIView, ConfigurableView {
 
     // MARK: - Properties
     private let image = UIImageView()
-    private let name = UILabel()
+    private let name = DS.Label()
     private let imageManager: ImageManagerProtocol
     
     // MARK: - Initialization
@@ -30,12 +30,10 @@ class CocktailCellView: UIView, ConfigurableView {
         addSubview(image)
         
         name.translatesAutoresizingMaskIntoConstraints = false
-        name.font = UIFont.systemFont(ofSize: 20, weight: .bold)
-        name.textColor = .dark
         addSubview(name)
         
         // Тени
-        self.layer.shadowColor = UIColor(named: "dark")?.cgColor
+        self.layer.shadowColor = DS.Colors.dark.cgColor
         self.layer.shadowOffset = CGSize(width: 1, height: 3)
         self.layer.shadowRadius = 5
         self.layer.shadowOpacity = 0.3
@@ -63,7 +61,10 @@ class CocktailCellView: UIView, ConfigurableView {
     
     // MARK: - Methods
     func configure(with viewModel: CocktailCellViewModel) {
-        name.text = viewModel.name
+        name.configure(with: DS.LabelViewModel(
+            text: viewModel.name,
+            style: .primary,
+            size: .large))
         imageManager.getImage(url: viewModel.imageUrl) { image in
             DispatchQueue.main.async {
                 self.image.image = image

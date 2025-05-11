@@ -7,12 +7,18 @@ class CardView: UIView, ConfigurableView {
     private let scrollView = UIScrollView()
     private let contentView = UIView()
     private let cocktailImageView = UIImageView()
-    private let nameLabel = UILabel()
-    private let descriptionLabel = UILabel()
-    private let ingredientsHeaderLabel = UILabel()
-    private let ingredientsStackView = UIStackView()
-    private let gearHeaderLabel = UILabel()
-    private let gearStackView = UIStackView()
+    private let nameLabel = DS.Label()
+    private let descriptionLabel = DS.Label()
+    private let ingredientsHeaderLabel = DS.Label(viewModel: DS.LabelViewModel(
+        text: "Ингредиенты",
+        style: .primary,
+        size: .large))
+    private let ingredientsStackView = DS.Stack()
+    private let gearHeaderLabel = DS.Label(viewModel: DS.LabelViewModel(
+        text: "Инструменты",
+        style: .primary,
+        size: .large))
+    private let gearStackView = DS.Stack()
     
     // MARK: - Dependencies
     private let imageManager: ImageManagerProtocol
@@ -47,23 +53,14 @@ class CardView: UIView, ConfigurableView {
         
         // setup name
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
-        nameLabel.font = UIFont.systemFont(ofSize: 24, weight: .bold)
-        nameLabel.textColor = .dark
-        nameLabel.numberOfLines = 0
         contentView.addSubview(nameLabel)
         
         // setup description
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
-        descriptionLabel.font = UIFont.systemFont(ofSize: 16)
-        descriptionLabel.textColor = .secondaryLabel
-        descriptionLabel.numberOfLines = 0
         contentView.addSubview(descriptionLabel)
         
         // setup ingredients header
         ingredientsHeaderLabel.translatesAutoresizingMaskIntoConstraints = false
-        ingredientsHeaderLabel.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
-        ingredientsHeaderLabel.textColor = .dark
-        ingredientsHeaderLabel.text = "Ингредиенты"
         contentView.addSubview(ingredientsHeaderLabel)
         
         // setup ingredients
@@ -76,9 +73,6 @@ class CardView: UIView, ConfigurableView {
         
         // setup gear header
         gearHeaderLabel.translatesAutoresizingMaskIntoConstraints = false
-        gearHeaderLabel.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
-        gearHeaderLabel.textColor = .dark
-        gearHeaderLabel.text = "Инструменты"
         contentView.addSubview(gearHeaderLabel)
         
         // setup gear
@@ -152,8 +146,8 @@ class CardView: UIView, ConfigurableView {
             return
         }
         
-        nameLabel.text = cocktail.name
-        descriptionLabel.text = cocktail.description
+        nameLabel.configure(with: DS.LabelViewModel(text: cocktail.name, style: .primary, size: .large))
+        descriptionLabel.configure(with: DS.LabelViewModel(text: cocktail.description, style: .secondary, size: .small))
         
         imageManager.getImage(url: cocktail.imageUrl) { [weak self] image in
             DispatchQueue.main.async {
@@ -180,19 +174,18 @@ class CardView: UIView, ConfigurableView {
         containerView.backgroundColor = .systemBackground
         containerView.layer.cornerRadius = 12
         
-        let nameLabel = UILabel()
-        nameLabel.text = name
-        nameLabel.font = UIFont.systemFont(ofSize: 16, weight: .medium)
-        nameLabel.textColor = .dark
+        let nameLabel = DS.Label(viewModel: DS.LabelViewModel(
+            text: name,
+            style: .primary,
+            size: .medium))
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        let amountLabel = UILabel()
-        amountLabel.text = amount
-        amountLabel.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        amountLabel.textColor = .secondaryLabel
-        amountLabel.textAlignment = .right
+        let amountLabel = DS.Label(viewModel: DS.LabelViewModel(
+            text: amount,
+            style: .primary,
+            size: .medium))
         amountLabel.translatesAutoresizingMaskIntoConstraints = false
-        
+
         containerView.addSubview(nameLabel)
         containerView.addSubview(amountLabel)
         
@@ -216,10 +209,10 @@ class CardView: UIView, ConfigurableView {
         containerView.backgroundColor = .systemBackground
         containerView.layer.cornerRadius = 12
         
-        let nameLabel = UILabel()
-        nameLabel.text = name
-        nameLabel.font = UIFont.systemFont(ofSize: 16, weight: .medium)
-        nameLabel.textColor = .dark
+        let nameLabel = DS.Label(viewModel: DS.LabelViewModel(
+            text: name,
+            style: .primary,
+            size: .medium))
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         
         containerView.addSubview(nameLabel)
