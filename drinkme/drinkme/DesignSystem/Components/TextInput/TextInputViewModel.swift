@@ -11,10 +11,10 @@ extension DS {
 
         let placeholder: String
         let state: State
-        let isSecure: Bool = false
-        let title: String? = nil
-        let value: String? = nil
-        let errorMessage: String? = nil
-        let description: String? = nil
+        let isSecure: Bool
+        let title: String?
+        let value: String?
+        let errorMessage: String?
+        let description: String?
     }
 }

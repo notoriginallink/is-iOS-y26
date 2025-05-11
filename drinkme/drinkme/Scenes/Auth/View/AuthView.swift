@@ -7,11 +7,13 @@ class AuthView: UIView {
     var usernameTextField = DS.TextInput(viewModel: .init(
         placeholder: "Имя пользователя",
         state: .active,
-        isSecure: false))
+        isSecure: false,
+        title: nil, value: nil, errorMessage: nil, description: nil))
     var passwordTextField = DS.TextInput(viewModel: .init(
         placeholder: "Пароль",
         state: .active,
-        isSecure: true))
+        isSecure: true,
+        title: nil, value: nil, errorMessage: nil, description: nil))
     var closeButton = DS.IconButton(viewModel: DS.IconButtonViewModel(
         icon: DS.Icon.x,
         size: .medium,

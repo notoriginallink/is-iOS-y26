@@ -174,7 +174,6 @@ class CardView: UIView, ConfigurableView {
         containerView.backgroundColor = .systemBackground
         containerView.layer.cornerRadius = 12
         
-        // TODO: почему то не отображаются лейблы
         let nameLabel = DS.Label(viewModel: DS.LabelViewModel(
             text: name,
             style: .primary,
@@ -183,10 +182,10 @@ class CardView: UIView, ConfigurableView {
         
         let amountLabel = DS.Label(viewModel: DS.LabelViewModel(
             text: amount,
-            style: .secondary,
+            style: .primary,
             size: .medium))
         amountLabel.translatesAutoresizingMaskIntoConstraints = false
-        
+
         containerView.addSubview(nameLabel)
         containerView.addSubview(amountLabel)
         

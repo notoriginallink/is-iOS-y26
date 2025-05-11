@@ -11,6 +11,7 @@ extension DS {
         init(viewModel: DS.LabelViewModel) {
             super.init(frame: .zero)
             setupLabel()
+            configure(with: viewModel)
         }
         
         required init?(coder: NSCoder) {

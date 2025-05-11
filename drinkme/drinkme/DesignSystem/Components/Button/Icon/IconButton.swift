@@ -18,6 +18,7 @@ extension DS {
         
         // MARK: - Setup
         private func setupButton() {
+            addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
             layer.cornerRadius = 5
         }
         
