@@ -46,9 +46,9 @@ extension DS {
             let padding: CGFloat
             switch viewModel.size {
             case .small:
-                padding = DS.Spacing.xs
+                padding = DS.Spacing.xs.value
             case .medium:
-                padding = DS.Spacing.s
+                padding = DS.Spacing.s.value
             }
 
             imageView?.contentMode = .scaleAspectFit

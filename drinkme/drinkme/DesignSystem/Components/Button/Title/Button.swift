@@ -48,14 +48,35 @@ extension DS {
             
             switch viewModel.size {
             case .small:
-                self.configuration?.contentInsets = NSDirectionalEdgeInsets(top: DS.Spacing.xs, leading: DS.Spacing.s, bottom: DS.Spacing.xs, trailing: DS.Spacing.s)
+                self.configuration?.contentInsets = NSDirectionalEdgeInsets(
+                    top: DS.Spacing.xs.value,
+                    leading: DS.Spacing.s.value,
+                    bottom: DS.Spacing.xs.value,
+                    trailing: DS.Spacing.s.value)
                 titleLabel?.font = DS.Typography.small
+                NSLayoutConstraint.activate([
+                    heightAnchor.constraint(equalToConstant: 32)
+                ])
             case .medium:
-                self.configuration?.contentInsets = NSDirectionalEdgeInsets(top: DS.Spacing.s, leading: DS.Spacing.m, bottom: DS.Spacing.s, trailing: DS.Spacing.m)
+                self.configuration?.contentInsets = NSDirectionalEdgeInsets(
+                    top: DS.Spacing.s.value,
+                    leading: DS.Spacing.m.value,
+                    bottom: DS.Spacing.s.value,
+                    trailing: DS.Spacing.m.value)
                 titleLabel?.font = DS.Typography.medium
+                NSLayoutConstraint.activate([
+                    heightAnchor.constraint(equalToConstant: 50)
+                ])
             case .large:
-                self.configuration?.contentInsets = NSDirectionalEdgeInsets(top: DS.Spacing.m, leading: DS.Spacing.l, bottom: DS.Spacing.m, trailing: DS.Spacing.l)
+                self.configuration?.contentInsets = NSDirectionalEdgeInsets(
+                    top: DS.Spacing.m.value,
+                    leading: DS.Spacing.l.value,
+                    bottom: DS.Spacing.m.value,
+                    trailing: DS.Spacing.l.value)
                 titleLabel?.font = DS.Typography.large
+                NSLayoutConstraint.activate([
+                    heightAnchor.constraint(equalToConstant: 64)
+                ])
             }
         }
         

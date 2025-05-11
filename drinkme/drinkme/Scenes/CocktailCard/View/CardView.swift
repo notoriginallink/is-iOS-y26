@@ -13,12 +13,12 @@ class CardView: UIView, ConfigurableView {
         text: "Ингредиенты",
         style: .primary,
         size: .large))
-    private let ingredientsStackView = UIStackView()
+    private let ingredientsStackView = DS.Stack()
     private let gearHeaderLabel = DS.Label(viewModel: DS.LabelViewModel(
         text: "Инструменты",
         style: .primary,
         size: .large))
-    private let gearStackView = UIStackView()
+    private let gearStackView = DS.Stack()
     
     // MARK: - Dependencies
     private let imageManager: ImageManagerProtocol

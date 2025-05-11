@@ -2,10 +2,22 @@ import Foundation
 
 extension DS {
     public enum Spacing {
-        public static let xs: CGFloat = 4
-        public static let s: CGFloat = 8
-        public static let m: CGFloat = 16
-        public static let l: CGFloat = 24
-        public static let xl: CGFloat = 32
+        case none
+        case xs
+        case s
+        case m
+        case l
+        case xl
+        
+        var value: CGFloat {
+            switch self {
+            case .none: return 0
+            case .s: return 4
+            case .xs: return 8
+            case .m: return 16
+            case .l: return 24
+            case .xl: return 32
+            }
+        }
     }
 }

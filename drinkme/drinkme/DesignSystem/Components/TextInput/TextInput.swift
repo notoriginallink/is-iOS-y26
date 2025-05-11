@@ -38,6 +38,8 @@ extension DS {
         
         private func setupConstraints() {
             NSLayoutConstraint.activate([
+                heightAnchor.constraint(greaterThanOrEqualToConstant: 44),
+                
                 titleLabel.topAnchor.constraint(equalTo: topAnchor),
                 
                 descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
