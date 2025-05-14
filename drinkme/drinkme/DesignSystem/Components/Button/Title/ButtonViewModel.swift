@@ -2,19 +2,19 @@ import UIKit
 
 extension DS {
     public struct ButtonViewModel {
-        public enum Style {
+        public enum Style: String {
             case primary
             case neutral
             case subtle
         }
         
-        public enum Size {
+        public enum Size: String {
             case small
             case medium
             case large
         }
         
-        public enum State {
+        public enum State: String {
             case active
             case inactive
         }

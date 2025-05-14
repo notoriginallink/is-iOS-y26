@@ -24,7 +24,7 @@ extension DS {
         
         // MARK: - Config
         func configure(with viewModel: DS.IconButtonViewModel) {
-            setImage(DS.Icon.x, for: .normal)
+            setImage(DS.Icon.x.value, for: .normal)
             
             switch viewModel.state {
             case .active:

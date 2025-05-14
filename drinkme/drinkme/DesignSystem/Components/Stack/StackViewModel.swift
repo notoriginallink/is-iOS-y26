@@ -2,7 +2,7 @@ import UIKit
 
 extension DS {
     public struct StackViewModel {
-        public enum Axis {
+        public enum Axis: String {
             case vertical
             case horizontal
         }

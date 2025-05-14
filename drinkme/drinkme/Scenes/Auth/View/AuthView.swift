@@ -5,7 +5,7 @@ class AuthView: UIView {
     // MARK: - Subviews
     var logo = UIImageView()
     var closeButton = DS.IconButton(viewModel: DS.IconButtonViewModel(
-        icon: DS.Icon.x,
+        icon: DS.Icon.x.value,
         size: .medium,
         style: .subtle,
         state: .active))

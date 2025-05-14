@@ -2,17 +2,17 @@ import UIKit
 
 extension DS {
     public struct IconButtonViewModel {
-        public enum Style {
+        public enum Style: String {
             case primary
             case subtle
         }
         
-        public enum State {
+        public enum State: String {
             case active
             case inactive
         }
         
-        public enum Size {
+        public enum Size: String {
             case medium
             case small
         }
