@@ -1,7 +1,7 @@
 import Foundation
 
 extension DS {
-    public enum Spacing {
+    public enum Spacing: String {
         case none
         case xs
         case s

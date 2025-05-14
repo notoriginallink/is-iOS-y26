@@ -2,7 +2,7 @@ import UIKit
 
 extension DS {
     public struct TextInputViewModel {
-        public enum State {
+        public enum State: String {
             case active
             case inactive
             case disabled
